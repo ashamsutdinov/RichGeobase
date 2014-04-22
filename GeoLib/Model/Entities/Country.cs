@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,6 +9,9 @@ namespace GeoLib.Model.Entities
         public Country()
         {
             Languages = new HashSet<Language>();
+            Toponyms = new HashSet<Toponym>();
+            Neighbors = new HashSet<Country>();
+            NeighborTo = new HashSet<Country>();
         }
 
         [Key]
@@ -44,16 +45,16 @@ namespace GeoLib.Model.Entities
         [StringLength(16)]
         public string Fips { get; set; }
 
-        public int CapitalCityId { get; set; }
+        public int? CapitalCityId { get; set; }
 
-        [ForeignKey("CapitalCityId")]
+        //[ForeignKey("CapitalCityId")]
         public Toponym CapitalCity { get; set; }
 
         [Index]
         public int Population { get; set; }
 
         [Index]
-        public float Area { get; set; }
+        public double Area { get; set; }
 
         public string CurrencyId { get; set; }
 
@@ -71,5 +72,12 @@ namespace GeoLib.Model.Entities
         public string PostalCodeRegex { get; set; }
 
         public ICollection<Language> Languages { get; set; }
+
+        public ICollection<Toponym> Toponyms { get; set; }
+
+        public ICollection<Country> Neighbors { get; set; }
+
+        public ICollection<Country> NeighborTo { get; set; }
+
     }
 }

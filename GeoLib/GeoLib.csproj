@@ -134,6 +134,8 @@
     <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
     <Compile Include="Helpers\CollectionHelper.cs" />
     <Compile Include="Helpers\ContinentHelper.cs" />
+    <Compile Include="Helpers\CountryHelper.cs" />
+    <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Helpers\FeatureClassHelper.cs" />
     <Compile Include="Helpers\FeatureHelper.cs" />
     <Compile Include="Helpers\IterationInfo.cs" />
@@ -247,6 +249,26 @@
     <Compile Include="Migrations\201404221037183_TestAdmUnits.Designer.cs">
       <DependentUpon>201404221037183_TestAdmUnits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404221055273_CountryAreaDouble_Remove.cs" />
+    <Compile Include="Migrations\201404221055273_CountryAreaDouble_Remove.Designer.cs">
+      <DependentUpon>201404221055273_CountryAreaDouble_Remove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221055532_CountryAreaDouble.cs" />
+    <Compile Include="Migrations\201404221055532_CountryAreaDouble.Designer.cs">
+      <DependentUpon>201404221055532_CountryAreaDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221155250_CountryCapitalCity_Removed.cs" />
+    <Compile Include="Migrations\201404221155250_CountryCapitalCity_Removed.Designer.cs">
+      <DependentUpon>201404221155250_CountryCapitalCity_Removed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221206554_GeoRelations.cs" />
+    <Compile Include="Migrations\201404221206554_GeoRelations.Designer.cs">
+      <DependentUpon>201404221206554_GeoRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221309526_CountryNeighbors.cs" />
+    <Compile Include="Migrations\201404221309526_CountryNeighbors.Designer.cs">
+      <DependentUpon>201404221309526_CountryNeighbors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
@@ -354,6 +376,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404221037183_TestAdmUnits.resx">
       <DependentUpon>201404221037183_TestAdmUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221055273_CountryAreaDouble_Remove.resx">
+      <DependentUpon>201404221055273_CountryAreaDouble_Remove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221055532_CountryAreaDouble.resx">
+      <DependentUpon>201404221055532_CountryAreaDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221155250_CountryCapitalCity_Removed.resx">
+      <DependentUpon>201404221155250_CountryCapitalCity_Removed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221206554_GeoRelations.resx">
+      <DependentUpon>201404221206554_GeoRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221309526_CountryNeighbors.resx">
+      <DependentUpon>201404221309526_CountryNeighbors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

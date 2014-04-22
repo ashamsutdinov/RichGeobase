@@ -1,10 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeoLib.Model.Entities
 {
     public class Continent
     {
+        public Continent()
+        {
+            
+        }
+
         [Key]
         public string Id { get; set; }
 
@@ -14,5 +20,7 @@ namespace GeoLib.Model.Entities
         public Toponym Toponym { get; set; }
 
         public string Name { get; set; }
+
+        public ICollection<Toponym> Toponyms { get; set; } 
     }
 }

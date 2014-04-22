@@ -1,5 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using GeoLib.Model;
 using GeoLib.Model.Entities;
 
@@ -26,9 +30,13 @@ namespace GeoLib.Helpers
 
             admUnit.Country = country;
             admUnit.Code = code;
+            if (!string.IsNullOrEmpty(name))
+                admUnit.Name = name;
+            if (!string.IsNullOrEmpty(tname))
             admUnit.ToponymName = tname;
             admUnit.Level = level;
-            admUnit.ToponymId = toponymId;
+            if (toponymId != null)
+                admUnit.ToponymId = toponymId;
 
             if (context == null)
             {
@@ -37,6 +45,170 @@ namespace GeoLib.Helpers
             }
 
             return admUnit;
+        }
+
+        public static void ParseAdmin1Units(string path)
+        {
+            var stream = ResourceHelper.ReadFileContent(path);
+            using (var ctx = new GeoContext())
+            {
+                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        try
+                        {
+                            var line = sr.ReadLine();
+                            if (line == null)
+                                continue;
+
+                            if (line.StartsWith("#"))
+                                continue;
+
+                            Console.WriteLine(line);
+                            var parts = line.Split(new[] { '\t' });
+                            if (parts.Length < 4)
+                                continue;
+
+                            var code = parts[0];
+                            var name = parts[1];
+                            var ascii = parts[2];
+                            var stid = parts[3];
+
+                            if (code.Contains("."))
+                            {
+                                var p = code.Split(new[] { '.' });
+                                var coid = p[0];
+                                code = p[1];
+
+                                if (string.IsNullOrEmpty(code))
+                                    continue;
+
+                                var ctry = ctx.Countries.GetByCode(coid);
+                                if (ctry != null)
+                                {
+                                    var tid = int.Parse(stid);
+                                    var maybeAlreadySaved = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, code, 1);
+                                    if (maybeAlreadySaved != null)
+                                    {
+                                        continue;
+                                    }
+                                    var tries = 0;
+                                    Toponym toponym = null;
+                                    while (toponym == null && tries <= 10)
+                                    {
+                                        toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
+                                        Thread.Sleep(100);
+                                        tries++;
+                                    }
+                                    var adm1Unit = new AdministrativeUnit
+                                    {
+                                        Country = ctry,
+                                        Toponym = toponym,
+                                        Level = 1,
+                                        Code = code,
+                                        Name = ascii,
+                                        ToponymName = name
+                                    };
+                                    ctx.AdministrativeUnits.Add(adm1Unit);
+                                }
+                            }
+                            ctx.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            Console.ReadKey();
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void ParseAdmin2Units(string path)
+        {
+            var stream = ResourceHelper.ReadFileContent(path);
+            using (var ctx = new GeoContext())
+            {
+                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        try
+                        {
+                            var line = sr.ReadLine();
+                            if (line == null)
+                                continue;
+
+                            if (line.StartsWith("#"))
+                                continue;
+
+                            Console.WriteLine(line);
+                            var parts = line.Split(new[] { '\t' });
+                            if (parts.Length < 4)
+                                continue;
+
+                            var code = parts[0];
+                            var name = parts[1];
+                            var ascii = parts[2];
+                            var stid = parts[3];
+
+                            if (code.Contains("."))
+                            {
+                                var p = code.Split(new[] { '.' });
+                                var coid = p[0];
+                                var pcode = p[1];
+                                code = p[2];
+
+                                if (string.IsNullOrEmpty(code))
+                                    continue;
+
+                                var ctry = ctx.Countries.GetByCode(coid);
+                                if (ctry != null)
+                                {
+                                    var tid = int.Parse(stid);
+                                    var maybeAlreadySaved = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, code, 2);
+                                    if (maybeAlreadySaved != null)
+                                    {
+                                        continue;
+                                    }
+                                    var tries = 0;
+                                    Toponym toponym = null;
+                                    var possibleParent = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, pcode, 1);
+                                    Toponym parent = null;
+                                    if (possibleParent != null)
+                                    {
+                                        var parentId = possibleParent.ToponymId.GetValueOrDefault();
+                                        parent = ctx.Toponyms.GetById(parentId);
+                                    }
+                                    while (toponym == null && tries <= 10)
+                                    {
+                                        toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx);
+                                        Thread.Sleep(100);
+                                        tries++;
+                                    }
+                                    var adm1Unit = new AdministrativeUnit
+                                    {
+                                        Country = ctry,
+                                        Toponym = toponym,
+                                        Level = 2,
+                                        Code = code,
+                                        Name = ascii,
+                                        ToponymName = name,
+                                    };
+                                    ctx.AdministrativeUnits.Add(adm1Unit);
+                                }
+                            }
+                            ctx.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            Console.ReadKey();
+                        }
+                    }
+                }
+            }
         }
     }
 }
