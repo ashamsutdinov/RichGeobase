@@ -94,8 +94,8 @@ namespace GeoLib.Helpers
                                         continue;
                                     }
                                     var tries = 0;
-                                    Toponym toponym = null;
-                                    while (toponym == null && tries <= 10)
+                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
+                                    while (toponym == null && tries < 10)
                                     {
                                         toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
                                         Thread.Sleep(100);
@@ -173,7 +173,6 @@ namespace GeoLib.Helpers
                                         continue;
                                     }
                                     var tries = 0;
-                                    Toponym toponym = null;
                                     var possibleParent = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, pcode, 1);
                                     Toponym parent = null;
                                     if (possibleParent != null)
@@ -181,7 +180,8 @@ namespace GeoLib.Helpers
                                         var parentId = possibleParent.ToponymId.GetValueOrDefault();
                                         parent = ctx.Toponyms.GetById(parentId);
                                     }
-                                    while (toponym == null && tries <= 10)
+                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx);
+                                    while (toponym == null && tries < 10)
                                     {
                                         toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx);
                                         Thread.Sleep(100);

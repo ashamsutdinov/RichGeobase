@@ -92,8 +92,8 @@ namespace GeoLib.Helpers
                                 currency = CurrencyHelper.SaveCurrency(currc, curr, ctx);
                             }
                             var tries = 0;
-                            Toponym toponym = null;
-                            while (toponym == null && tries <= 10)
+                            var toponym = ToponymHelper.SaveToponym(id, null, null, ctx);
+                            while (toponym == null && tries < 10)
                             {
                                 toponym = ToponymHelper.SaveToponym(id, null, null, ctx);
                                 Thread.Sleep(100);
