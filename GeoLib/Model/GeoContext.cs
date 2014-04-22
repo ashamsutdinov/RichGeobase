@@ -34,6 +34,8 @@ namespace GeoLib.Model
 
         public DbSet<Country> Countries { get; set; }
 
-        public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; } 
+        public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; }
+
+        public DbSet<ToponymName> ToponymNames { get; set; } 
     }
 }

@@ -8,6 +8,7 @@ namespace GeoLib.Model.Entities
         [Key]
         public int Id { get; set; }
 
+        [Index]
         public int CountryId { get; set; }
 
         [ForeignKey("CountryId")]
@@ -28,7 +29,7 @@ namespace GeoLib.Model.Entities
         [StringLength(256)]
         public string ToponymName { get; set; }
 
-        public int ToponymId { get; set; }
+        public int? ToponymId { get; set; }
 
         [ForeignKey("ToponymId")]
         public Toponym Toponym { get; set; }

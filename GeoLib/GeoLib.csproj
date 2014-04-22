@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoNames\GeoNamesHelper.cs" />
     <Compile Include="GeoNames\NGeo\ExtensionMethods.cs" />
     <Compile Include="GeoNames\NGeo\GeoNames\AlternateName.cs" />
     <Compile Include="GeoNames\NGeo\GeoNames\Country.cs" />
@@ -130,10 +131,15 @@
     <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\ResultSet.cs" />
     <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_IInvokePlaceFinderServices.cs" />
     <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_ResultSet.cs" />
+    <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
+    <Compile Include="Helpers\CollectionHelper.cs" />
     <Compile Include="Helpers\ContinentHelper.cs" />
     <Compile Include="Helpers\FeatureClassHelper.cs" />
     <Compile Include="Helpers\FeatureHelper.cs" />
+    <Compile Include="Helpers\IterationInfo.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\LocationHelper.cs" />
+    <Compile Include="Helpers\ObjectHelper.cs" />
     <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
@@ -205,6 +211,42 @@
     <Compile Include="Migrations\201404220835393_ContinentToponymNullable.Designer.cs">
       <DependentUpon>201404220835393_ContinentToponymNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404220926272_LocationDouble.cs" />
+    <Compile Include="Migrations\201404220926272_LocationDouble.Designer.cs">
+      <DependentUpon>201404220926272_LocationDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220933146_ToponymCountry.cs" />
+    <Compile Include="Migrations\201404220933146_ToponymCountry.Designer.cs">
+      <DependentUpon>201404220933146_ToponymCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220937249_ToponymPopulation.cs" />
+    <Compile Include="Migrations\201404220937249_ToponymPopulation.Designer.cs">
+      <DependentUpon>201404220937249_ToponymPopulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220942018_ToponymIndexes.cs" />
+    <Compile Include="Migrations\201404220942018_ToponymIndexes.Designer.cs">
+      <DependentUpon>201404220942018_ToponymIndexes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220955274_ToponymIdentityTest.cs" />
+    <Compile Include="Migrations\201404220955274_ToponymIdentityTest.Designer.cs">
+      <DependentUpon>201404220955274_ToponymIdentityTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221004526_Datetime2_Remove.cs" />
+    <Compile Include="Migrations\201404221004526_Datetime2_Remove.Designer.cs">
+      <DependentUpon>201404221004526_Datetime2_Remove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221005282_Datetime2.cs" />
+    <Compile Include="Migrations\201404221005282_Datetime2.Designer.cs">
+      <DependentUpon>201404221005282_Datetime2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221013355_ToponymNames.cs" />
+    <Compile Include="Migrations\201404221013355_ToponymNames.Designer.cs">
+      <DependentUpon>201404221013355_ToponymNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221037183_TestAdmUnits.cs" />
+    <Compile Include="Migrations\201404221037183_TestAdmUnits.Designer.cs">
+      <DependentUpon>201404221037183_TestAdmUnits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
@@ -219,6 +261,7 @@
     <Compile Include="Model\Entities\Location.cs" />
     <Compile Include="Model\Entities\TimeZone.cs" />
     <Compile Include="Model\Entities\Toponym.cs" />
+    <Compile Include="Model\Entities\ToponymName.cs" />
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,6 +327,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404220835393_ContinentToponymNullable.resx">
       <DependentUpon>201404220835393_ContinentToponymNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220926272_LocationDouble.resx">
+      <DependentUpon>201404220926272_LocationDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220933146_ToponymCountry.resx">
+      <DependentUpon>201404220933146_ToponymCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220937249_ToponymPopulation.resx">
+      <DependentUpon>201404220937249_ToponymPopulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220942018_ToponymIndexes.resx">
+      <DependentUpon>201404220942018_ToponymIndexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220955274_ToponymIdentityTest.resx">
+      <DependentUpon>201404220955274_ToponymIdentityTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221004526_Datetime2_Remove.resx">
+      <DependentUpon>201404221004526_Datetime2_Remove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221005282_Datetime2.resx">
+      <DependentUpon>201404221005282_Datetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221013355_ToponymNames.resx">
+      <DependentUpon>201404221013355_ToponymNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221037183_TestAdmUnits.resx">
+      <DependentUpon>201404221037183_TestAdmUnits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

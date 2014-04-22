@@ -23,7 +23,7 @@ namespace GeoLib.Migrations
                 "dbo.Toponyms",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(),
                         Name = c.String(),

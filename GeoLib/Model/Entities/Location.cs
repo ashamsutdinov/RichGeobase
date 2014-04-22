@@ -9,10 +9,10 @@ namespace GeoLib.Model.Entities
         public int Id { get; set; }
 
         [Index]
-        public float? Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [Index]
-        public float? Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         public int? Elevation { get; set; }
     }

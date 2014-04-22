@@ -20,10 +20,6 @@ namespace GeoLib.Model.Entities
         [ForeignKey("Id")]
         public Toponym Toponym { get; set; }
 
-        public DateTime DateCreated { get; set; }
-
-        public DateTime? DateUpdated { get; set; }
-
         public string ContinentId { get; set; }
 
         [ForeignKey("ContinentId")]

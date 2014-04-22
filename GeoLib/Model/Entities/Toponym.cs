@@ -10,17 +10,30 @@ namespace GeoLib.Model.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime DateCreated { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime? DateUpdated { get; set; }
 
+        [Index]
+        [StringLength(256)]
         public string Name { get; set; }
 
+        [Index]
+        [StringLength(256)]
         public string ToponymName { get; set; }
 
-        public int? Population { get; set; }
+        public long? Population { get; set; }
 
+        [Index]
+        [StringLength(8)]
         public string ContinentId { get; set; }
+
+        public int? CountryId { get; set; }
+
+        [ForeignKey("CountryId")]
+        public Country Country { get; set; }
 
         //[ForeignKey("ContinentId")]
         //public Continent Continent { get; set; }
@@ -85,6 +98,7 @@ namespace GeoLib.Model.Entities
 
         public string FAAC { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime? DateSourceUpdated { get; set; }
 
         public bool IsCity { get; set; }

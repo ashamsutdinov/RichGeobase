@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using GeoLib.Model;
@@ -8,7 +7,7 @@ namespace GeoLib.Helpers
 {
     public static class ContinentHelper
     {
-        public static void ParseFeature(string path)
+        public static void ParseContinents(string path)
         {
             using (var ctx = new GeoContext())
             {
@@ -29,13 +28,19 @@ namespace GeoLib.Helpers
                         var id = parts[0];
                         var name = parts[1];
                         var tid = int.Parse(parts[2]);
-                        
 
-                        
+                        var t = ToponymHelper.SaveToponym(tid, null, null, ctx);
+                        var c = ctx.Continents.GetOrCreate(id);
+                        c.Entity.Id = id;
+                        c.Entity.Toponym = t;
+                        c.Entity.Name = name;
+
+                        ctx.Continents.PrepareToSave(c);
                     }
                 }
                 ctx.SaveChanges();
             }
+
         }
     }
 }

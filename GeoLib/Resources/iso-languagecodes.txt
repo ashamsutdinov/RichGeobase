@@ -1,3 +1,4 @@
+_	_	_	Neutral language
 afa	afa		Afro-Asiatic languages
 alg	alg		Algonquian languages
 apa	apa		Apache languages
