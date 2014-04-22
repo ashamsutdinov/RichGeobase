@@ -315,10 +315,14 @@ namespace GeoLib.Helpers
 
             if (country != null)
             {
-                t.Admin1 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin1Code, requested.Admin1Name, null, 1, null, ctx);
-                t.Admin2 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin2Code, requested.Admin2Name, null, 2, null, ctx);
-                t.Admin3 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin3Code, requested.Admin3Name, null, 3, null, ctx);
-                t.Admin4 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin4Code, requested.Admin4Name, null, 4, null, ctx);
+                if (!string.IsNullOrEmpty(requested.Admin1Code))
+                    t.Admin1 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin1Code, requested.Admin1Name, null, 1, null, ctx);
+                if (!string.IsNullOrEmpty(requested.Admin2Code))
+                    t.Admin2 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin2Code, requested.Admin2Name, null, 2, null, ctx);
+                if (!string.IsNullOrEmpty(requested.Admin3Code))
+                    t.Admin3 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin3Code, requested.Admin3Name, null, 3, null, ctx);
+                if (!string.IsNullOrEmpty(requested.Admin4Code))
+                    t.Admin4 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin4Code, requested.Admin4Name, null, 4, null, ctx);
             }
 
             t.Country = country;

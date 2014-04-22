@@ -313,6 +313,7 @@
     <Compile Include="Model\Entities\ToponymName.cs" />
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
+    <Compile Include="OSM\OpenStreetMapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ZipHelper.cs" />
     <Compile Include="Resources\GeoRes.Designer.cs">

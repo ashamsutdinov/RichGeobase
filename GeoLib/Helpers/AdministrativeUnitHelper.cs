@@ -33,7 +33,7 @@ namespace GeoLib.Helpers
             if (!string.IsNullOrEmpty(name))
                 admUnit.Name = name;
             if (!string.IsNullOrEmpty(tname))
-            admUnit.ToponymName = tname;
+                admUnit.ToponymName = tname;
             admUnit.Level = level;
             if (toponymId != null)
                 admUnit.ToponymId = toponymId;
@@ -88,11 +88,6 @@ namespace GeoLib.Helpers
                                 if (ctry != null)
                                 {
                                     var tid = int.Parse(stid);
-                                    var maybeAlreadySaved = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, code, 1);
-                                    if (maybeAlreadySaved != null)
-                                    {
-                                        continue;
-                                    }
                                     var tries = 0;
                                     var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
                                     while (toponym == null && tries < 10)
@@ -101,16 +96,7 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    var adm1Unit = new AdministrativeUnit
-                                    {
-                                        Country = ctry,
-                                        Toponym = toponym,
-                                        Level = 1,
-                                        Code = code,
-                                        Name = ascii,
-                                        ToponymName = name
-                                    };
-                                    ctx.AdministrativeUnits.Add(adm1Unit);
+                                    SaveAdministrativeUnit(ctry, code, ascii, name, 1, toponym.Id, ctx);
                                 }
                             }
                             ctx.SaveChanges();
@@ -187,16 +173,7 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    var adm1Unit = new AdministrativeUnit
-                                    {
-                                        Country = ctry,
-                                        Toponym = toponym,
-                                        Level = 2,
-                                        Code = code,
-                                        Name = ascii,
-                                        ToponymName = name,
-                                    };
-                                    ctx.AdministrativeUnits.Add(adm1Unit);
+                                    SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym.Id, ctx);
                                 }
                             }
                             ctx.SaveChanges();

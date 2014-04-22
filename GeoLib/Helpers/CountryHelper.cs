@@ -72,7 +72,7 @@ namespace GeoLib.Helpers
             }
         }
 
-        public static void ParseCountries(string path)
+        public static void ParseCountries(string path, bool forsed = false)
         {
             var stream = ResourceHelper.ReadFileContent(path);
             using (var ctx = new GeoContext())
@@ -139,7 +139,7 @@ namespace GeoLib.Helpers
                             //var eqfips = parts[18];
 
                             var country = ctx.Countries.GetOrCreate(id);
-                            if (!country.IsNew)
+                            if (!country.IsNew && !forsed)
                             {
                                 var t = ctx.Toponyms.GetById(country.Entity.Id);
                                 if (t != null && t.DateUpdated.GetValueOrDefault().AddDays(7) > DateTime.UtcNow)
