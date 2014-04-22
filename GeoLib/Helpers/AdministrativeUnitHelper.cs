@@ -89,10 +89,10 @@ namespace GeoLib.Helpers
                                 {
                                     var tid = int.Parse(stid);
                                     var tries = 0;
-                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
+                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx, false);
                                     while (toponym == null && tries < 10)
                                     {
-                                        toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx);
+                                        toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx, false);
                                         Thread.Sleep(100);
                                         tries++;
                                     }
@@ -153,11 +153,6 @@ namespace GeoLib.Helpers
                                 if (ctry != null)
                                 {
                                     var tid = int.Parse(stid);
-                                    var maybeAlreadySaved = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, code, 2);
-                                    if (maybeAlreadySaved != null)
-                                    {
-                                        continue;
-                                    }
                                     var tries = 0;
                                     var possibleParent = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, pcode, 1);
                                     Toponym parent = null;
@@ -166,10 +161,10 @@ namespace GeoLib.Helpers
                                         var parentId = possibleParent.ToponymId.GetValueOrDefault();
                                         parent = ctx.Toponyms.GetById(parentId);
                                     }
-                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx);
+                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx, false);
                                     while (toponym == null && tries < 10)
                                     {
-                                        toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx);
+                                        toponym = ToponymHelper.SaveToponym(tid, ctry, parent, ctx, false);
                                         Thread.Sleep(100);
                                         tries++;
                                     }
