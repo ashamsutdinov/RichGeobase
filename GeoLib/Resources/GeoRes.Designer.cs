@@ -209,5 +209,31 @@ namespace GeoLib.Resources {
                 return ResourceManager.GetString("iso_languagecodes", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CI	Africa/Abidjan	0.0	0.0	0.0
+        ///GH	Africa/Accra	0.0	0.0	0.0
+        ///ET	Africa/Addis_Ababa	3.0	3.0	3.0
+        ///DZ	Africa/Algiers	1.0	1.0	1.0
+        ///ER	Africa/Asmara	3.0	3.0	3.0
+        ///ML	Africa/Bamako	0.0	0.0	0.0
+        ///CF	Africa/Bangui	1.0	1.0	1.0
+        ///GM	Africa/Banjul	0.0	0.0	0.0
+        ///GW	Africa/Bissau	0.0	0.0	0.0
+        ///MW	Africa/Blantyre	2.0	2.0	2.0
+        ///CG	Africa/Brazzaville	1.0	1.0	1.0
+        ///BI	Africa/Bujumbura	2.0	2.0	2.0
+        ///EG	Africa/Cairo	2.0	2.0	2.0
+        ///MA	Africa/Casablanca	0.0	1.0	0.0
+        ///ES	Africa/Ceuta	1.0	2.0	1.0
+        ///GN	Africa/Conakry	0.0	0.0	0.0
+        ///SN	Africa/Dakar	0.0	0.0	0.0
+        ///T [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string timeZones {
+            get {
+                return ResourceManager.GetString("timeZones", resourceCulture);
+            }
+        }
     }
 }

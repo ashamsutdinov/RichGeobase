@@ -8,7 +8,7 @@ namespace GeoLib.Model.Entities
         [Key]
         public string Id { get; set; }
 
-        public int ToponymId { get; set; }
+        public int? ToponymId { get; set; }
 
         [ForeignKey("ToponymId")]
         public Toponym Toponym { get; set; }

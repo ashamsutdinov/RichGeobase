@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,7 @@
     <Compile Include="Helpers\FeatureClassHelper.cs" />
     <Compile Include="Helpers\FeatureHelper.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="Migrations\201404211759525_Initial.cs" />
@@ -114,6 +116,14 @@
     <Compile Include="Migrations\201404220754317_LanguagesLength.cs" />
     <Compile Include="Migrations\201404220754317_LanguagesLength.Designer.cs">
       <DependentUpon>201404220754317_LanguagesLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220830383_TimeZoneName.cs" />
+    <Compile Include="Migrations\201404220830383_TimeZoneName.Designer.cs">
+      <DependentUpon>201404220830383_TimeZoneName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404220835393_ContinentToponymNullable.cs" />
+    <Compile Include="Migrations\201404220835393_ContinentToponymNullable.Designer.cs">
+      <DependentUpon>201404220835393_ContinentToponymNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
@@ -189,6 +199,12 @@
     <EmbeddedResource Include="Migrations\201404220754317_LanguagesLength.resx">
       <DependentUpon>201404220754317_LanguagesLength.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220830383_TimeZoneName.resx">
+      <DependentUpon>201404220830383_TimeZoneName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220835393_ContinentToponymNullable.resx">
+      <DependentUpon>201404220835393_ContinentToponymNullable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GeoRes.Designer.cs</LastGenOutput>
@@ -226,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iso-languagecodes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\timeZones.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

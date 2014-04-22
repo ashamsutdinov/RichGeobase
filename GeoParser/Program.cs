@@ -16,6 +16,7 @@ namespace GeoParser
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_no, "no");
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_ru, "ru");
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_sv, "sv");
+            //TimeZoneHelper.ParseFeature(GeoRes.timeZones);
         }
     }
 }

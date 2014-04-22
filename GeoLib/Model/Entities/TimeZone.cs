@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeoLib.Model.Entities
 {
@@ -7,10 +8,14 @@ namespace GeoLib.Model.Entities
         [Key]
         public string Id { get; set; }
 
-        public int GmtOffset { get; set; }
+        [Index]
+        [StringLength(32)]
+        public string Name { get; set; }
 
-        public int DstOffset { get; set; }
+        public double GmtOffset { get; set; }
 
-        public int RawOffset { get; set; }
+        public double DstOffset { get; set; }
+
+        public double RawOffset { get; set; }
     }
 }
