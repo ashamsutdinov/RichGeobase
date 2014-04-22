@@ -67,12 +67,18 @@
     <Compile Include="Migrations\201404220442166_TimeZone.Designer.cs">
       <DependentUpon>201404220442166_TimeZone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404220453376_Location.cs" />
+    <Compile Include="Migrations\201404220453376_Location.Designer.cs">
+      <DependentUpon>201404220453376_Location.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Entities\BoundingBox.cs" />
     <Compile Include="Model\Entities\Continent.cs" />
     <Compile Include="Model\Entities\Feature.cs" />
     <Compile Include="Model\Entities\FeatureClass.cs" />
     <Compile Include="Model\Entities\FeatureName.cs" />
     <Compile Include="Model\Entities\Language.cs" />
+    <Compile Include="Model\Entities\Location.cs" />
     <Compile Include="Model\Entities\TimeZone.cs" />
     <Compile Include="Model\Entities\Toponym.cs" />
     <Compile Include="Model\GeoContext.cs" />
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404220442166_TimeZone.resx">
       <DependentUpon>201404220442166_TimeZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404220453376_Location.resx">
+      <DependentUpon>201404220453376_Location.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

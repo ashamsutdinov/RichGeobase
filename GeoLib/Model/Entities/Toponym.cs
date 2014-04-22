@@ -22,6 +22,9 @@ namespace GeoLib.Model.Entities
 
         public string ContinentId { get; set; }
 
+        //[ForeignKey("ContinentId")]
+        //public Continent Continent { get; set; }
+
         public string FeatureClassId { get; set; }
 
         [ForeignKey("FeatureClassId")]
@@ -52,7 +55,13 @@ namespace GeoLib.Model.Entities
 
         public int? LocationId { get; set; }
 
+        [ForeignKey("LocationId")]
+        public Location Location { get; set; }
+
         public int? BoundingBoxId { get; set; }
+
+        [ForeignKey("BoundingBoxId")]
+        public BoundingBox BoundingBox { get; set; }
 
         public string PhoneCode { get; set; }
 

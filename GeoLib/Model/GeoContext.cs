@@ -24,6 +24,10 @@ namespace GeoLib.Model
 
         public DbSet<FeatureName> FeatureNames { get; set; }
 
-        public DbSet<TimeZone> TimeZones { get; set; } 
+        public DbSet<TimeZone> TimeZones { get; set; }
+
+        public DbSet<BoundingBox> BoundingBoxes { get; set; }
+
+        public DbSet<Location> Locations { get; set; }
     }
 }
