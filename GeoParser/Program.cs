@@ -20,9 +20,10 @@ namespace GeoParser
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_sv, "sv");
             //TimeZoneHelper.ParseFeature(GeoRes.timeZones);
             //ContinentHelper.ParseContinents(GeoRes.continents);
-            CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt", true);
+            CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt");
             AdministrativeUnitHelper.ParseAdmin1Units("http://download.geonames.org/export/dump/admin1CodesASCII.txt");
             AdministrativeUnitHelper.ParseAdmin2Units("http://download.geonames.org/export/dump/admin2Codes.txt");
+            CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt", true);
             //ToponymHelper.ParseToponyms("http://download.geonames.org/export/dump/allCountries.zip");
             //ToponymHelper.ParseToponymNames("http://download.geonames.org/export/dump/alternateNames.zip");
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities1000.zip", CitySize.Small);

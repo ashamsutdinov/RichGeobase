@@ -305,6 +305,7 @@
     <Compile Include="Model\Entities\CitySize.cs" />
     <Compile Include="Model\Entities\Continent.cs" />
     <Compile Include="Model\Entities\Country.cs" />
+    <Compile Include="Model\Entities\CountryIPAddressBlock.cs" />
     <Compile Include="Model\Entities\Currency.cs" />
     <Compile Include="Model\Entities\Feature.cs" />
     <Compile Include="Model\Entities\FeatureClass.cs" />
