@@ -21,9 +21,16 @@ namespace GeoLib.GeoNames
 
         private static GeoNamesClient _client;
 
-        public static NGeo.GeoNames.Toponym GetToponym(int id)
+        public static Toponym GetToponym(int id)
         {
-            return RequestFromGeoNames(c => c.Get(id, _currentGeoNamesAccount));
+            var requested = RequestFromGeoNames(c => c.Get(id, _currentGeoNamesAccount));
+            var tries = 0;
+            while (requested == null && tries < 10)
+            {
+                requested = RequestFromGeoNames(c => c.Get(id, _currentGeoNamesAccount));
+                tries++;
+            }
+            return requested;
         }
 
         public static TResult RequestFromGeoNames<TResult>(Func<GeoNamesClient, TResult> request)

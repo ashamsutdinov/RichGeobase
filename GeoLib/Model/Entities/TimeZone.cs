@@ -8,8 +8,7 @@ namespace GeoLib.Model.Entities
         [Key]
         public string Id { get; set; }
 
-        [Index]
-        [StringLength(32)]
+        [Index, StringLength(32)]
         public string Name { get; set; }
 
         public double GmtOffset { get; set; }

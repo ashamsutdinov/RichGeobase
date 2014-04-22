@@ -14,8 +14,7 @@ namespace GeoLib.Model.Entities
         [ForeignKey("CountryId")]
         public Country Country { get; set; }
 
-        [Index]
-        [StringLength(32)]
+        [Index, StringLength(32)]
         public string Code { get; set; }
 
         [Index]
@@ -25,8 +24,7 @@ namespace GeoLib.Model.Entities
         [StringLength(256)]
         public string Name { get; set; }
 
-        [Index]
-        [StringLength(256)]
+        [Index, StringLength(256)]
         public string ToponymName { get; set; }
 
         public int? ToponymId { get; set; }

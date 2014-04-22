@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.ServiceModel;
+using System.Threading;
 
 namespace NGeo.GeoNames
 {
@@ -17,8 +18,9 @@ namespace NGeo.GeoNames
     /// </example>
     public class GeoNamesClient : ClientBase<IInvokeGeoNamesServices>, IConsumeGeoNames
     {
-        private const int RetryLimit = 15;
-        private const string ClosedConnectionMessage = "The underlying connection was closed: A connection that was expected to be kept alive was closed by the server.";
+        private const int RetryLimit = 25;
+        private const int ThreadDelay = 100;
+        //private const string ClosedConnectionMessage = "The underlying connection was closed: A connection that was expected to be kept alive was closed by the server.";
 
         /// <summary>
         /// Find nearby populated place / reverse geocoding. See
@@ -51,8 +53,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelFindNearbyPlaceName(finder, ++retry);
+                }
                 throw;
             }
         }
@@ -83,8 +88,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelLookupPostalCode(lookup, ++retry);
+                }
                 throw;
             }
         }
@@ -111,8 +119,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelPostalCodeCountryInfo(userName, ++retry);
+                }
                 throw;
             }
         }
@@ -137,9 +148,12 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelGet(geoNameId, userName, ++retry);
-                return new Toponym {GeoNameId = -1000};
+                }
+                return new Toponym {GeoNameId = -1};
             }
         }
 
@@ -185,8 +199,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelChildren(geoNameId, userName, resultStyle, maxRows, ++retry);
+                }
                 throw;
             }
         }
@@ -214,8 +231,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelCountries(userName, ++retry);
+                }
                 throw;
             }
         }
@@ -244,8 +264,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return ChannelHierarchy(geoNameId, userName, resultStyle, ++retry);
+                }
                 throw;
             }
         }
@@ -288,8 +311,11 @@ namespace NGeo.GeoNames
             }
             catch (WebException ex)
             {
-                if (retry < RetryLimit && ex.Message.StartsWith(ClosedConnectionMessage, StringComparison.Ordinal))
+                if (retry < RetryLimit)
+                {
+                    Thread.Sleep(ThreadDelay);
                     return Channel.Search(q, name, nameEquals, maxRows, startRow, lang, resultStyle, userName);
+                }
                 throw;
             }
         }

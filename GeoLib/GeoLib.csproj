@@ -135,6 +135,7 @@
     <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_IInvokePlaceFinderServices.cs" />
     <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_ResultSet.cs" />
     <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
+    <Compile Include="Helpers\CityHelper.cs" />
     <Compile Include="Helpers\CollectionHelper.cs" />
     <Compile Include="Helpers\ContinentHelper.cs" />
     <Compile Include="Helpers\CountryHelper.cs" />
@@ -272,10 +273,36 @@
     <Compile Include="Migrations\201404221309526_CountryNeighbors.Designer.cs">
       <DependentUpon>201404221309526_CountryNeighbors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404221727276_Cities.cs" />
+    <Compile Include="Migrations\201404221727276_Cities.Designer.cs">
+      <DependentUpon>201404221727276_Cities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221729133_CitiesRef.cs" />
+    <Compile Include="Migrations\201404221729133_CitiesRef.Designer.cs">
+      <DependentUpon>201404221729133_CitiesRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221809058_CapitalCity.cs" />
+    <Compile Include="Migrations\201404221809058_CapitalCity.Designer.cs">
+      <DependentUpon>201404221809058_CapitalCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221811529_CapitalCityId_Removed.cs" />
+    <Compile Include="Migrations\201404221811529_CapitalCityId_Removed.Designer.cs">
+      <DependentUpon>201404221811529_CapitalCityId_Removed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221813451_CapitalCity_Removed.cs" />
+    <Compile Include="Migrations\201404221813451_CapitalCity_Removed.Designer.cs">
+      <DependentUpon>201404221813451_CapitalCity_Removed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404221817116_CapitalCity_Restored.cs" />
+    <Compile Include="Migrations\201404221817116_CapitalCity_Restored.Designer.cs">
+      <DependentUpon>201404221817116_CapitalCity_Restored.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
     <Compile Include="Model\Entities\BoundingBox.cs" />
+    <Compile Include="Model\Entities\City.cs" />
+    <Compile Include="Model\Entities\CitySize.cs" />
     <Compile Include="Model\Entities\Continent.cs" />
     <Compile Include="Model\Entities\Country.cs" />
     <Compile Include="Model\Entities\Currency.cs" />
@@ -289,6 +316,7 @@
     <Compile Include="Model\Entities\ToponymName.cs" />
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
+    <Compile Include="OSM\OpenStreetMapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ZipHelper.cs" />
     <Compile Include="Resources\GeoRes.Designer.cs">
@@ -394,6 +422,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404221309526_CountryNeighbors.resx">
       <DependentUpon>201404221309526_CountryNeighbors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221727276_Cities.resx">
+      <DependentUpon>201404221727276_Cities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221729133_CitiesRef.resx">
+      <DependentUpon>201404221729133_CitiesRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221809058_CapitalCity.resx">
+      <DependentUpon>201404221809058_CapitalCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221811529_CapitalCityId_Removed.resx">
+      <DependentUpon>201404221811529_CapitalCityId_Removed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221813451_CapitalCity_Removed.resx">
+      <DependentUpon>201404221813451_CapitalCity_Removed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404221817116_CapitalCity_Restored.resx">
+      <DependentUpon>201404221817116_CapitalCity_Restored.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

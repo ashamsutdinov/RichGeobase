@@ -17,8 +17,7 @@ namespace GeoLib.Model.Entities
         [ForeignKey("LanguageId")]
         public Language Language { get; set; }
 
-        [Index]
-        [StringLength(256)]
+        [Index, StringLength(256)]
         public string Name { get; set; }
     }
 }

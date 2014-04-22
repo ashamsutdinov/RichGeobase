@@ -14,12 +14,10 @@ namespace GeoLib.Model.Entities
         [Key]
         public string Id { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string IsoVariant1 { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string IsoVariant2 { get; set; }
 
         public string Description { get; set; }

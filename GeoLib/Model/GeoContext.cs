@@ -37,13 +37,16 @@ namespace GeoLib.Model
 
         public DbSet<ToponymName> ToponymNames { get; set; }
 
+        public DbSet<City> Cities { get; set; } 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Country>().HasOptional(c => c.CapitalCity).WithMany(c => c.IsCapitalCityFor);
+            modelBuilder.Entity<Country>().HasOptional(c => c.CapitalCity).WithOptionalDependent(ct => ct.CapitalCityForCountry);
             modelBuilder.Entity<Toponym>().HasOptional(t => t.Continent).WithMany(t => t.Toponyms);
             modelBuilder.Entity<Toponym>().HasOptional(t => t.Country).WithMany(t => t.Toponyms);
             modelBuilder.Entity<Country>().HasMany(t => t.Neighbors).WithMany(t => t.NeighborTo);
+            modelBuilder.Entity<Country>().HasMany(t => t.Cities).WithRequired(c => c.Country);
         }
     }
 }
