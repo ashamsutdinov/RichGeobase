@@ -20,8 +20,7 @@ namespace GeoLib.Model.Entities
         [Index]
         public int Level { get; set; }
 
-        [Index]
-        [StringLength(256)]
+        [Index, StringLength(256)]
         public string Name { get; set; }
 
         [Index, StringLength(256)]

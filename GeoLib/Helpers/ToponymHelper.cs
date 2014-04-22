@@ -195,56 +195,62 @@ namespace GeoLib.Helpers
                             if (ctry != null)
                             {
                                 var adm1Code = parts[10];
+                                var adm2Code = parts[11];
+                                var adm3Code = parts[12];
+                                var adm4Code = parts[13];
                                 if (!string.IsNullOrEmpty(adm1Code))
                                 {
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm1Code, null, null, 1, null, ctx);
+                                    var adm1ShouldBeSaved = string.IsNullOrEmpty(adm2Code);
+                                    var adm1Name = adm1ShouldBeSaved ? name : null;
+                                    var adm1TName = adm1ShouldBeSaved ? tname : null;
+                                    var adm1TId = adm1ShouldBeSaved ? (int?)id : null;
+                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm1Code, adm1Name, adm1TName, 1, adm1TId, ctx);
                                     t.Admin1 = aUnit;
                                 }
-                                var adm2Code = parts[11];
                                 if (!string.IsNullOrEmpty(adm2Code))
                                 {
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm2Code, null, null, 2, null, ctx);
+                                    var adm2ShouldBeSaved = string.IsNullOrEmpty(adm3Code);
+                                    var adm2Name = adm2ShouldBeSaved ? name : null;
+                                    var adm2TName = adm2ShouldBeSaved ? tname : null;
+                                    var adm2TId = adm2ShouldBeSaved ? (int?)id : null;
+                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm2Code, adm2Name, adm2TName, 2, adm2TId, ctx);
                                     t.Admin2 = aUnit;
                                 }
-                                var adm3Code = parts[12];
                                 if (!string.IsNullOrEmpty(adm3Code))
                                 {
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, null, null, 3, null, ctx);
+                                    var adm3ShouldBeSaved = string.IsNullOrEmpty(adm4Code);
+                                    var adm3Name = adm3ShouldBeSaved ? name : null;
+                                    var adm3TName = adm3ShouldBeSaved ? tname : null;
+                                    var adm3TId = adm3ShouldBeSaved ? (int?)id : null;
+                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm3Name, adm3TName, 3, adm3TId, ctx);
                                     t.Admin3 = aUnit;
                                 }
-
-                                var adm4Code = parts[13];
                                 if (!string.IsNullOrEmpty(adm4Code))
                                 {
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, null, null, 4, null, ctx);
+                                    var adm4Name = name;
+                                    var adm4TName = tname;
+                                    var adm4TId = (int?) id;
+                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm4Name, adm4TName, 4, adm4TId, ctx);
                                     t.Admin4 = aUnit;
                                 }
-                                var firstExistingAdmUnit = t.Admin4 ?? t.Admin3 ?? t.Admin2 ?? t.Admin1;
+                                var firstExistingAdmUnit = t.Admin3 ?? t.Admin2 ?? t.Admin1;
                                 if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
                                 {
                                     t.ParentId = firstExistingAdmUnit.ToponymId;
                                 }
                                 else
                                 {
-                                    firstExistingAdmUnit = t.Admin3 ?? t.Admin2 ?? t.Admin1;
+                                    firstExistingAdmUnit = t.Admin2 ?? t.Admin1;
                                     if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
                                     {
                                         t.ParentId = firstExistingAdmUnit.ToponymId;
                                     }
                                     else
                                     {
-                                        firstExistingAdmUnit = t.Admin2 ?? t.Admin1;
+                                        firstExistingAdmUnit = t.Admin1;
                                         if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
                                         {
                                             t.ParentId = firstExistingAdmUnit.ToponymId;
-                                        }
-                                        else
-                                        {
-                                            firstExistingAdmUnit = t.Admin1;
-                                            if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
-                                            {
-                                                t.ParentId = firstExistingAdmUnit.ToponymId;
-                                            }
                                         }
                                     }
                                 }
@@ -296,7 +302,7 @@ namespace GeoLib.Helpers
             }
         }
 
-        public static Toponym SaveToponym(int id, Country country, Toponym parent, GeoContext context)
+        public static Toponym SaveToponym(int id, Country country, Toponym parent, GeoContext context, bool saveAdmUnits = true)
         {
             var ctx = context ?? new GeoContext();
 
@@ -313,7 +319,7 @@ namespace GeoLib.Helpers
             t.Id = requested.GeoNameId;
             t.Location = LocationHelper.SaveToponymLocation(requested, ctx);
 
-            if (country != null)
+            if (country != null && saveAdmUnits)
             {
                 if (!string.IsNullOrEmpty(requested.Admin1Code))
                     t.Admin1 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin1Code, requested.Admin1Name, null, 1, null, ctx);
