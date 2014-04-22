@@ -8,7 +8,7 @@ namespace GeoLib.Model.Entities
         [Key, Column(Order = 1)]
         public int Start { get; set; }
 
-        [Key, Column(Order = 1)]
+        [Key, Column(Order = 2)]
         public int End { get; set; }
 
         public int CountryId { get; set; }

@@ -96,7 +96,8 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    SaveAdministrativeUnit(ctry, code, ascii, name, 1, toponym.Id, ctx);
+                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 1, toponym.Id, ctx);
+                                    toponym.Admin1 = aUnit;
                                 }
                             }
                             ctx.SaveChanges();
@@ -168,7 +169,9 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym.Id, ctx);
+                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym.Id, ctx);
+                                    toponym.Admin1 = possibleParent;
+                                    toponym.Admin2 = aUnit;
                                 }
                             }
                             ctx.SaveChanges();

@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201404221817116_CapitalCity_Restored.Designer.cs">
       <DependentUpon>201404221817116_CapitalCity_Restored.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404222147402_CIP.cs" />
+    <Compile Include="Migrations\201404222147402_CIP.Designer.cs">
+      <DependentUpon>201404222147402_CIP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
@@ -441,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404221817116_CapitalCity_Restored.resx">
       <DependentUpon>201404221817116_CapitalCity_Restored.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404222147402_CIP.resx">
+      <DependentUpon>201404222147402_CIP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
