@@ -14,8 +14,7 @@ namespace GeoLib.Model.Entities
             NeighborTo = new HashSet<Country>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [ForeignKey("Id")]
@@ -26,30 +25,23 @@ namespace GeoLib.Model.Entities
         [ForeignKey("ContinentId")]
         public Continent Continent { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string Code { get; set; }
 
-        [Index]
-        [StringLength(128)]
+        [Index, StringLength(128)]
         public string Name { get; set; }
 
         [Index]
         public int IsoNumeric { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string IsoAlpha { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string Fips { get; set; }
-
-        public int? CapitalCityId { get; set; }
-
-        //[ForeignKey("CapitalCityId")]
-        public Toponym CapitalCity { get; set; }
-
+        
+        public City CapitalCity { get; set; }
+        
         [Index]
         public int Population { get; set; }
 
@@ -61,8 +53,7 @@ namespace GeoLib.Model.Entities
         [ForeignKey("CurrencyId")]
         public Currency Currency { get; set; }
 
-        [Index]
-        [StringLength(16)]
+        [Index, StringLength(16)]
         public string Domain { get; set; }
 
         public string PhoneCode { get; set; }
@@ -78,6 +69,8 @@ namespace GeoLib.Model.Entities
         public ICollection<Country> Neighbors { get; set; }
 
         public ICollection<Country> NeighborTo { get; set; }
+
+        public ICollection<City> Cities { get; set; } 
 
     }
 }

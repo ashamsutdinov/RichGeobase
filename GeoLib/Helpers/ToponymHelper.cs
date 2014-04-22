@@ -325,7 +325,8 @@ namespace GeoLib.Helpers
             t.Parent = parent;
             if (!string.IsNullOrEmpty(requested.ContinentCode))
             {
-                t.ContinentId = requested.ContinentCode;
+                var continent = ctx.Continents.GetById(requested.ContinentCode);
+                t.Continent = continent;
             }
             if (!string.IsNullOrEmpty(requested.FeatureClassCode))
             {

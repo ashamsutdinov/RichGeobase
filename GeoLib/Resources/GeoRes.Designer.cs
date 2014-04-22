@@ -76,6 +76,24 @@ namespace GeoLib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skipping country: {0}.
+        /// </summary>
+        public static string CountryHelper_ParseCountries_Skipping_country___0_ {
+            get {
+                return ResourceManager.GetString("CountryHelper_ParseCountries_Skipping_country___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undefined language {0}.
+        /// </summary>
+        public static string CountryHelper_ParseCountries_Undefined_language__0_ {
+            get {
+                return ResourceManager.GetString("CountryHelper_ParseCountries_Undefined_language__0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A	country, state, region,...
         ///H	stream, lake, ...
         ///L	parks,area, ...
@@ -111,7 +129,7 @@ namespace GeoLib.Resources {
         ///A.ADM1H	historical first-order administrative division	a former first-order administrative division
         ///A.ADM2	second-order administrative division	a subdivision of a first-order administrative division
         ///A.ADM2H	historical second-order administrative division	a former second-order administrative division
-        ///A.ADM3	third-order administrative division	a subdivision of a second-order administ [rest of string was truncated]&quot;;.
+        ///A.ADM3	third-order administrative division	a subdivision of a second-order admi [rest of string was truncated]&quot;;.
         /// </summary>
         public static string featureCodes_en {
             get {
@@ -124,7 +142,7 @@ namespace GeoLib.Resources {
         ///A.ADM1H	historical first-order administrative division	a former first-order administrative division
         ///A.ADM2	sekundær administrativ inndeling	a subdivision of a first-order administrative division
         ///A.ADM2H	historical second-order administrative division	a former second-order administrative division
-        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administrative [rest of string was truncated]&quot;;.
+        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administra [rest of string was truncated]&quot;;.
         /// </summary>
         public static string featureCodes_nb {
             get {
@@ -137,7 +155,7 @@ namespace GeoLib.Resources {
         ///A.ADM1H	historical first-order administrative division	a former first-order administrative division
         ///A.ADM2	sekundær administrativ inndeling	a subdivision of a first-order administrative division
         ///A.ADM2H	historical second-order administrative division	a former second-order administrative division
-        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administrative [rest of string was truncated]&quot;;.
+        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administra [rest of string was truncated]&quot;;.
         /// </summary>
         public static string featureCodes_nn {
             get {
@@ -150,7 +168,7 @@ namespace GeoLib.Resources {
         ///A.ADM1H	historical first-order administrative division	a former first-order administrative division
         ///A.ADM2	sekundær administrativ inndeling	a subdivision of a first-order administrative division
         ///A.ADM2H	historical second-order administrative division	a former second-order administrative division
-        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administrative [rest of string was truncated]&quot;;.
+        ///A.ADM3	administrativ inndeling av tredje grad	a subdivision of a second-order administra [rest of string was truncated]&quot;;.
         /// </summary>
         public static string featureCodes_no {
             get {
@@ -185,7 +203,8 @@ namespace GeoLib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to afa	afa		Afro-Asiatic languages
+        ///   Looks up a localized string similar to _	_	_	Neutral language
+        ///afa	afa		Afro-Asiatic languages
         ///alg	alg		Algonquian languages
         ///apa	apa		Apache languages
         ///art	art		Artificial languages
@@ -202,7 +221,7 @@ namespace GeoLib.Resources {
         ///cau	cau		Caucasian languages
         ///cel	cel		Celtic languages
         ///cmc	cmc		Chamic languages
-        ///cpe	cpe		Creoles and pidgins, English  [rest of string was truncated]&quot;;.
+        ///cpe	cpe		Creole [rest of string was truncated]&quot;;.
         /// </summary>
         public static string iso_languagecodes {
             get {
@@ -227,8 +246,7 @@ namespace GeoLib.Resources {
         ///MA	Africa/Casablanca	0.0	1.0	0.0
         ///ES	Africa/Ceuta	1.0	2.0	1.0
         ///GN	Africa/Conakry	0.0	0.0	0.0
-        ///SN	Africa/Dakar	0.0	0.0	0.0
-        ///T [rest of string was truncated]&quot;;.
+        ///SN	Africa/Dak [rest of string was truncated]&quot;;.
         /// </summary>
         public static string timeZones {
             get {

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using GeoLib.Model;
 using GeoLib.Model.Entities;
+using GeoLib.Resources;
 using Currency = GeoLib.Model.Entities.Currency;
 
 namespace GeoLib.Helpers
@@ -17,6 +18,58 @@ namespace GeoLib.Helpers
         {
             var found = dbset.FirstOrDefault(c => c.Code == code);
             return found;
+        }
+
+        public static void FillCapitalCities(string path)
+        {
+            var stream = ResourceHelper.ReadFileContent(path);
+            using (var ctx = new GeoContext())
+            {
+                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        try
+                        {
+                            var line = sr.ReadLine();
+                            if (line == null)
+                                continue;
+
+                            if (line.StartsWith("#"))
+                                continue;
+
+                            Console.WriteLine(line);
+
+                            var parts = line.Split(new[] { '\t' });
+                            if (parts.Length < 19)
+                                continue;
+
+                            var capital = parts[5];
+                            var sid = parts[16];
+                            if (string.IsNullOrEmpty(sid))
+                                continue;
+                            var id = int.Parse(sid);
+                            var country = ctx.Countries.GetById(id);
+                            if (country != null)
+                            {
+                                var possibleCapitalCity = ctx.Toponyms.FindToponym(capital);
+                                if (possibleCapitalCity != null && possibleCapitalCity.CountryId == id)
+                                {
+                                    var city = ctx.Cities.GetById(possibleCapitalCity.Id);
+                                    country.CapitalCity = city;
+                                }
+
+                                ctx.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            Console.ReadKey();
+                        }
+                    }
+                }
+            }
         }
 
         public static void ParseCountries(string path)
@@ -49,8 +102,7 @@ namespace GeoLib.Helpers
                             var ison = int.Parse(sison);
                             var fips = parts[3];
                             var cn = parts[4];
-                            var capital = parts[5];
-                            var capitalCity = ctx.Toponyms.FindToponym(capital);
+                            //var capital = parts[5];
                             var sarea = parts[6];
                             var area = 0.0;
                             if (!string.IsNullOrEmpty(sarea))
@@ -86,6 +138,17 @@ namespace GeoLib.Helpers
                             var nbrs = parts[17].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                             //var eqfips = parts[18];
 
+                            var country = ctx.Countries.GetOrCreate(id);
+                            if (!country.IsNew)
+                            {
+                                var t = ctx.Toponyms.GetById(country.Entity.Id);
+                                if (t != null && t.DateUpdated.GetValueOrDefault().AddDays(7) > DateTime.UtcNow)
+                                {
+                                    Console.WriteLine(GeoRes.CountryHelper_ParseCountries_Skipping_country___0_, t.Name);
+                                    continue;
+                                }
+                            }
+
                             Currency currency = null;
                             if (!string.IsNullOrEmpty(currc))
                             {
@@ -100,7 +163,7 @@ namespace GeoLib.Helpers
                                 tries++;
                             }
 
-                            var country = ctx.Countries.GetOrCreate(id);
+                            
                             var c = country.Entity;
                             c.Id = id;
                             c.Name = cn;
@@ -117,7 +180,6 @@ namespace GeoLib.Helpers
                             c.PostalCodeRegex = pregex;
                             c.Currency = currency;
                             c.ContinentId = ctn;
-                            c.CapitalCity = capitalCity;
                             var alangs = string.Format("{0}", langs).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                             if (!country.IsNew)
                             {
@@ -126,7 +188,7 @@ namespace GeoLib.Helpers
                             }
                             foreach (var nbr in nbrs)
                             {
-                                if (c.Neighbors.Any(ct=>ct.Code == nbr))
+                                if (c.Neighbors.Any(ct => ct.Code == nbr))
                                     continue;
                                 var nctrry = GetByCode(ctx.Countries, nbr);
                                 if (nctrry != null)
@@ -145,7 +207,7 @@ namespace GeoLib.Helpers
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Undefined language {0}", alang);
+                                    Console.WriteLine(GeoRes.CountryHelper_ParseCountries_Undefined_language__0_, alang);
                                 }
                             }
                             ctx.Countries.PrepareToSave(country);

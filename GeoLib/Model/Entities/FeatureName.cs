@@ -8,7 +8,7 @@ namespace GeoLib.Model.Entities
         [Key, Column(Order = 1)]
         public string FeatureId { get; set; }
 
-        [Key,Column(Order = 2)]
+        [Key, Column(Order = 2)]
         public string LanguageId { get; set; }
 
         [ForeignKey("FeatureId")]
