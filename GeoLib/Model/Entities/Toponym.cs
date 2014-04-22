@@ -37,11 +37,23 @@ namespace GeoLib.Model.Entities
 
         public int? Admin1Id { get; set; }
 
+        [ForeignKey("Admin1Id")]
+        public AdministrativeUnit Admin1 { get; set; }
+
         public int? Admin2Id { get; set; }
+
+        [ForeignKey("Admin2Id")]
+        public AdministrativeUnit Admin2 { get; set; }
 
         public int? Admin3Id { get; set; }
 
+        [ForeignKey("Admin3Id")]
+        public AdministrativeUnit Admin3 { get; set; }
+
         public int? Admin4Id { get; set; }
+
+        [ForeignKey("Admin4Id")]
+        public AdministrativeUnit Admin4 { get; set; }
 
         public string TimeZoneId { get; set; }
 

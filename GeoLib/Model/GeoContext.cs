@@ -29,5 +29,11 @@ namespace GeoLib.Model
         public DbSet<BoundingBox> BoundingBoxes { get; set; }
 
         public DbSet<Location> Locations { get; set; }
+
+        public DbSet<Currency> Currencies { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<AdministrativeUnit> AdministrativeUnits { get; set; } 
     }
 }
