@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using GeoAPI.Areas.HelpPage.ModelDescriptions;
+using RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions;
 
-namespace GeoAPI.Areas.HelpPage.Models
+namespace RichGeobase.WebApi.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

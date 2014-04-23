@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using GeoAPI.Areas.HelpPage.ModelDescriptions;
-using GeoAPI.Areas.HelpPage.Models;
+using RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions;
+using RichGeobase.WebApi.Areas.HelpPage.Models;
 
-namespace GeoAPI.Areas.HelpPage.Controllers
+namespace RichGeobase.WebApi.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

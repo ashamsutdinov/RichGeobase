@@ -5,13 +5,15 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib", "GeoLib\GeoLib.csproj", "{9D242814-32DA-404A-B21F-A58983ED9263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoAPI", "GeoAPI\GeoAPI.csproj", "{B1D6604D-4CB9-44F5-B428-631445927DAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.WebApi", "GeoAPI\RichGeobase.WebApi.csproj", "{B1D6604D-4CB9-44F5-B428-631445927DAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoParser", "GeoParser\GeoParser.csproj", "{C5038B7F-F62E-4134-AA38-0350FB85631A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RichGeobase.Common", "RichGeobase.Common", "{53916543-6B63-41F7-8676-8C2C74ADD624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Query", "RichGeobase.Common\RichGeobase.Query\RichGeobase.Query.csproj", "{9D70E71A-E11B-4B54-96F8-3D143E3DD618}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RichGeobase.Hosts", "RichGeobase.Hosts", "{1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,5 +43,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618} = {53916543-6B63-41F7-8676-8C2C74ADD624}
+		{B1D6604D-4CB9-44F5-B428-631445927DAC} = {1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}
 	EndGlobalSection
 EndGlobal

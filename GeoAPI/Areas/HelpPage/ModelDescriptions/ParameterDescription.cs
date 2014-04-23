@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GeoAPI.Areas.HelpPage.ModelDescriptions
+namespace RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {
