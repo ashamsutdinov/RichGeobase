@@ -87,6 +87,11 @@ namespace GeoLib.Helpers
                                 var ctry = ctx.Countries.GetByCode(coid);
                                 if (ctry != null)
                                 {
+                                    var exists = FindAdministrativeUnit(ctx.AdministrativeUnits, ctry.Id, code, 1);
+                                    if (exists != null)
+                                        continue;
+                                    
+
                                     var tid = int.Parse(stid);
                                     var tries = 0;
                                     var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx, false);
@@ -96,8 +101,10 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 1, toponym.Id, ctx);
-                                    toponym.Admin1 = aUnit;
+                                    ctx.SaveChanges();
+                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 1, toponym != null ? (int?)toponym.Id : null, ctx);
+                                    if (toponym != null)
+                                        toponym.Admin1 = aUnit;
                                 }
                             }
                             ctx.SaveChanges();
@@ -153,6 +160,10 @@ namespace GeoLib.Helpers
                                 var ctry = ctx.Countries.GetByCode(coid);
                                 if (ctry != null)
                                 {
+                                    var exists = FindAdministrativeUnit(ctx.AdministrativeUnits, ctry.Id, code, 2);
+                                    if (exists != null)
+                                        continue;
+
                                     var tid = int.Parse(stid);
                                     var tries = 0;
                                     var possibleParent = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, pcode, 1);
@@ -169,9 +180,13 @@ namespace GeoLib.Helpers
                                         Thread.Sleep(100);
                                         tries++;
                                     }
-                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym.Id, ctx);
-                                    toponym.Admin1 = possibleParent;
-                                    toponym.Admin2 = aUnit;
+                                    ctx.SaveChanges();
+                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym != null ? (int?)toponym.Id : null, ctx);
+                                    if (toponym != null)
+                                    {
+                                        toponym.Admin1 = possibleParent;
+                                        toponym.Admin2 = aUnit;
+                                    }
                                 }
                             }
                             ctx.SaveChanges();

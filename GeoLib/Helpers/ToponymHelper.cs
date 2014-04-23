@@ -307,6 +307,8 @@ namespace GeoLib.Helpers
             var ctx = context ?? new GeoContext();
 
             var requested = GeoNamesHelper.GetToponym(id);
+            if (requested == null)
+                return null;
             var tEntity = ctx.Toponyms.GetOrCreate(id);
             var t = tEntity.Entity;
 
@@ -396,13 +398,13 @@ namespace GeoLib.Helpers
                 }
             }
 
+            ctx.Toponyms.PrepareToSave(tEntity);
+
             if (context == null)
             {
                 ctx.SaveChanges();
                 ctx.Dispose();
             }
-
-            ctx.Toponyms.PrepareToSave(tEntity);
 
             return t;
         }
