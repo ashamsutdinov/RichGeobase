@@ -23,12 +23,12 @@ namespace GeoParser
             //CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt");
             //AdministrativeUnitHelper.ParseAdmin1Units("http://download.geonames.org/export/dump/admin1CodesASCII.txt");
             //AdministrativeUnitHelper.ParseAdmin2Units("http://download.geonames.org/export/dump/admin2Codes.txt");
-            CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt", true);
             //ToponymHelper.ParseToponyms("http://download.geonames.org/export/dump/allCountries.zip");
             //ToponymHelper.ParseToponymNames("http://download.geonames.org/export/dump/alternateNames.zip");
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities1000.zip", CitySize.Small);
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities5000.zip", CitySize.Medium);
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities15000.zip", CitySize.Large);
+            CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt", true);
             //CountryHelper.FillCapitalCities("http://download.geonames.org/export/dump/countryInfo.txt");
 
             //OpenStreetMapHelper.ParseOSMDump(@"D:\Dropbox\Work\geobase\OSM\TJ.osm.pbf");
