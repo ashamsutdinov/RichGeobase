@@ -149,6 +149,11 @@
     <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="KLADR\KladrClient.cs" />
+    <Compile Include="KLADR\KladrResponse.cs" />
+    <Compile Include="KLADR\Types\SearchContext.cs" />
+    <Compile Include="KLADR\Types\SearchParent.cs" />
+    <Compile Include="KLADR\Types\SearchResult.cs" />
     <Compile Include="Migrations\201404211759525_Initial.cs" />
     <Compile Include="Migrations\201404211759525_Initial.Designer.cs">
       <DependentUpon>201404211759525_Initial.cs</DependentUpon>
@@ -454,7 +459,6 @@
       <LastGenOutput>GeoRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\fclasses.txt" />
   </ItemGroup>
