@@ -9,7 +9,7 @@ namespace GeoParser
     {
         static void Main(string[] args)
         {
-            //LanguageHelper.ParseLanguages(GeoRes.iso_languagecodes);
+            LanguageHelper.ParseLanguages(GeoRes.iso_languagecodes);
             //FeatureClassHelper.ParseFearureClasses(GeoRes.fclasses);
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_en, "en");
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_bg, "bg");

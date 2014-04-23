@@ -90,7 +90,7 @@ namespace GeoLib.Helpers
                                     var exists = FindAdministrativeUnit(ctx.AdministrativeUnits, ctry.Id, code, 1);
                                     if (exists != null)
                                         continue;
-                                    
+
 
                                     var tid = int.Parse(stid);
                                     var tries = 0;
@@ -122,11 +122,12 @@ namespace GeoLib.Helpers
         public static void ParseAdmin2Units(string path)
         {
             var stream = ResourceHelper.ReadFileContent(path);
-            using (var ctx = new GeoContext())
+
+            using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
-                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                while (!sr.EndOfStream)
                 {
-                    while (!sr.EndOfStream)
+                    using (var ctx = new GeoContext())
                     {
                         try
                         {
