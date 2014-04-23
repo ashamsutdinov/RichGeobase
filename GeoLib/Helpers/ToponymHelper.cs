@@ -38,7 +38,7 @@ namespace GeoLib.Helpers
 
                             Console.WriteLine(line);
 
-                            var parts = line.Split(new[] {'\t'});
+                            var parts = line.Split(new[] { '\t' });
                             if (parts.Length < 4)
                                 continue;
 
@@ -83,7 +83,7 @@ namespace GeoLib.Helpers
                                     }
                                     break;
                             }
-                            
+
                             ctx.SaveChanges();
                         }
                         catch (Exception ex)
@@ -99,11 +99,12 @@ namespace GeoLib.Helpers
         public static void ParseToponyms(string path)
         {
             var stream = ResourceHelper.ReadFileContent(path);
-            using (var ctx = new GeoContext())
+
+            using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
-                using (var sr = new StreamReader(stream, Encoding.UTF8))
+                while (!sr.EndOfStream)
                 {
-                    while (!sr.EndOfStream)
+                    using (var ctx = new GeoContext())
                     {
                         try
                         {
@@ -130,6 +131,13 @@ namespace GeoLib.Helpers
 
                             var toponym = ctx.Toponyms.GetOrCreate(id);
                             var t = toponym.Entity;
+
+                            if (toponym.IsNew)
+                            {
+                                t.DateCreated = DateTime.UtcNow;
+                            }
+                            ctx.Toponyms.PrepareToSave(toponym);
+                            t.DateUpdated = DateTime.UtcNow;
 
                             t.Id = id;
 
@@ -176,7 +184,7 @@ namespace GeoLib.Helpers
                             {
                                 t.FeatureId = f;
                             }
-                           
+
                             Country ctry = null;
                             var ccode = parts[8];
                             if (!string.IsNullOrEmpty(ccode))
@@ -187,7 +195,7 @@ namespace GeoLib.Helpers
                                     t.Country = ctry;
                                 }
                             }
-
+                            ctx.SaveChanges();
                             //var cc2 = parts[9];
 
                             #region AdmUnits
@@ -198,7 +206,8 @@ namespace GeoLib.Helpers
                                 var adm2Code = parts[11];
                                 var adm3Code = parts[12];
                                 var adm4Code = parts[13];
-                                if (!string.IsNullOrEmpty(adm1Code))
+                                var isAdm1 = !string.IsNullOrEmpty(adm1Code);
+                                if (isAdm1)
                                 {
                                     var adm1ShouldBeSaved = string.IsNullOrEmpty(adm2Code);
                                     var adm1Name = adm1ShouldBeSaved ? name : null;
@@ -207,7 +216,8 @@ namespace GeoLib.Helpers
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm1Code, adm1Name, adm1TName, 1, adm1TId, ctx);
                                     t.Admin1 = aUnit;
                                 }
-                                if (!string.IsNullOrEmpty(adm2Code))
+                                var isAdm2 = !string.IsNullOrEmpty(adm2Code);
+                                if (isAdm2)
                                 {
                                     var adm2ShouldBeSaved = string.IsNullOrEmpty(adm3Code);
                                     var adm2Name = adm2ShouldBeSaved ? name : null;
@@ -216,7 +226,8 @@ namespace GeoLib.Helpers
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm2Code, adm2Name, adm2TName, 2, adm2TId, ctx);
                                     t.Admin2 = aUnit;
                                 }
-                                if (!string.IsNullOrEmpty(adm3Code))
+                                var isAdm3 = !string.IsNullOrEmpty(adm3Code);
+                                if (isAdm3)
                                 {
                                     var adm3ShouldBeSaved = string.IsNullOrEmpty(adm4Code);
                                     var adm3Name = adm3ShouldBeSaved ? name : null;
@@ -225,32 +236,43 @@ namespace GeoLib.Helpers
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm3Name, adm3TName, 3, adm3TId, ctx);
                                     t.Admin3 = aUnit;
                                 }
-                                if (!string.IsNullOrEmpty(adm4Code))
+                                ctx.SaveChanges();
+                                var isAdm4 = !string.IsNullOrEmpty(adm4Code);
+                                if (isAdm4)
                                 {
                                     var adm4Name = name;
                                     var adm4TName = tname;
-                                    var adm4TId = (int?) id;
+                                    var adm4TId = (int?)id;
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm4Name, adm4TName, 4, adm4TId, ctx);
                                     t.Admin4 = aUnit;
                                 }
-                                var firstExistingAdmUnit = t.Admin3 ?? t.Admin2 ?? t.Admin1;
-                                if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
+                                if (isAdm4)
                                 {
-                                    t.ParentId = firstExistingAdmUnit.ToponymId;
+                                    var possibleParent = t.Admin3;
+                                    if (possibleParent != null)
+                                    {
+                                        t.ParentId = possibleParent.ToponymId;
+                                    }
                                 }
                                 else
                                 {
-                                    firstExistingAdmUnit = t.Admin2 ?? t.Admin1;
-                                    if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
+                                    if (isAdm3)
                                     {
-                                        t.ParentId = firstExistingAdmUnit.ToponymId;
+                                        var possibleParent = t.Admin2;
+                                        if (possibleParent != null)
+                                        {
+                                            t.ParentId = possibleParent.ToponymId;
+                                        }
                                     }
                                     else
                                     {
-                                        firstExistingAdmUnit = t.Admin1;
-                                        if (firstExistingAdmUnit != null && firstExistingAdmUnit.ToponymId != null)
+                                        if (isAdm2)
                                         {
-                                            t.ParentId = firstExistingAdmUnit.ToponymId;
+                                            var possibleParent = t.Admin1;
+                                            if (possibleParent != null)
+                                            {
+                                                t.ParentId = possibleParent.ToponymId;
+                                            }
                                         }
                                     }
                                 }
@@ -272,7 +294,7 @@ namespace GeoLib.Helpers
                             var tzone = parts[17];
                             if (!string.IsNullOrEmpty(tzone))
                             {
-                                t.TimeZoneId = tzone;
+                                t.TimeZone = ctx.TimeZones.FindTimeZone(tzone);
                             }
 
                             var mdate = parts[18];
@@ -288,15 +310,13 @@ namespace GeoLib.Helpers
                                     t.DateSourceUpdated = date;
                                 }
                             }
-
-                            ctx.Toponyms.PrepareToSave(toponym);
+                            ctx.SaveChanges();
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.ToString());
                             Console.ReadKey();
                         }
-                        ctx.SaveChanges();
                     }
                 }
             }

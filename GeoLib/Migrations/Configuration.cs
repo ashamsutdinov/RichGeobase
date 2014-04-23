@@ -1,3 +1,5 @@
+using GeoLib.Model;
+
 namespace GeoLib.Migrations
 {
     using System;
@@ -10,6 +12,7 @@ namespace GeoLib.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextType = typeof (GeoContext);
         }
 
         protected override void Seed(GeoLib.Model.GeoContext context)

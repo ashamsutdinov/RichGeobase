@@ -39,7 +39,9 @@ namespace GeoLib.Model
 
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<CountryIPAddressBlock> CountryIPAddressBlocks { get; set; } 
+        public DbSet<CountryIPAddressBlock> CountryIPAddressBlocks { get; set; }
+
+        public DbSet<ToponymTag> ToponymTags { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
