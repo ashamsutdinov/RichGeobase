@@ -8,6 +8,7 @@ using System.Threading;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
 using GeoLib.Dal.Resources;
+using GeoLib.Helpers;
 using Currency = GeoLib.Dal.Model.Entities.Currency;
 
 namespace GeoLib.Dal.Helpers

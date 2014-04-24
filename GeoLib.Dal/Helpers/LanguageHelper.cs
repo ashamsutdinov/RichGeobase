@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
+using GeoLib.Helpers;
 
 namespace GeoLib.Dal.Helpers
 {

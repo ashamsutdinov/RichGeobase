@@ -1,7 +1,8 @@
-﻿using GeoLib.Helpers;
-using GeoLib.Model.Entities;
-using GeoLib.OSM;
-using GeoLib.Resources;
+﻿using GeoLib.Dal.Helpers;
+using GeoLib.Helpers;
+using GeoLib.Dal.Model.Entities;
+using GeoLib.Dal.Resources;
+using GeoLib.Parsing;
 
 namespace GeoParser
 {
@@ -9,6 +10,14 @@ namespace GeoParser
     {
         static void Main(string[] args)
         {
+            var tasks = new ParsingTask[]
+            {
+
+            };
+            foreach (var parsingTask in tasks)
+            {
+                parsingTask.Execute();
+            }
             //LanguageHelper.ParseLanguages(GeoRes.iso_languagecodes);
             //FeatureClassHelper.ParseFearureClasses(GeoRes.fclasses);
             //FeatureHelper.ParseFeature(GeoRes.featureCodes_en, "en");
@@ -30,8 +39,6 @@ namespace GeoParser
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities15000.zip", CitySize.Large);
             //CountryHelper.ParseCountries("http://download.geonames.org/export/dump/countryInfo.txt", true, false);
             //CountryHelper.FillCapitalCities("http://download.geonames.org/export/dump/countryInfo.txt");
-
-            //OpenStreetMapHelper.ParseOSMDump(@"D:\Dropbox\Work\geobase\OSM\TJ.osm.pbf");
         }
     }
 }

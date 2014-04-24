@@ -36,9 +36,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\packages\DotNetZip.1.9.2\lib\net20\Ionic.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="JetBrains.Annotations">
       <HintPath>..\packages\JetBrains.Annotations.Redist.7.1\lib\net40\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -70,12 +67,6 @@
     <Compile Include="Helpers\LocationHelper.cs" />
     <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
-    <Compile Include="Helpers\ResourceHelper.cs" />
-    <Compile Include="KLADR\KladrClient.cs" />
-    <Compile Include="KLADR\KladrResponse.cs" />
-    <Compile Include="KLADR\Types\SearchContext.cs" />
-    <Compile Include="KLADR\Types\SearchParent.cs" />
-    <Compile Include="KLADR\Types\SearchResult.cs" />
     <Compile Include="Migrations\201404211759525_Initial.cs" />
     <Compile Include="Migrations\201404211759525_Initial.Designer.cs">
       <DependentUpon>201404211759525_Initial.cs</DependentUpon>
@@ -269,9 +260,7 @@
     <Compile Include="Model\Entities\ToponymTag.cs" />
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
-    <Compile Include="OSM\OpenStreetMapHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\ZipHelper.cs" />
     <Compile Include="Resources\GeoRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -460,9 +449,7 @@
       <Name>GeoLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parsers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

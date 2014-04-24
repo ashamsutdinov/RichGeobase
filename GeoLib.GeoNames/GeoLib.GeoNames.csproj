@@ -126,9 +126,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GeoNames\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GeoLib\GeoLib.csproj">
       <Project>{ca228300-d828-4969-9f9f-3a520df5ba5a}</Project>

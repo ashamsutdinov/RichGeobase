@@ -2,7 +2,7 @@
 using System.IO;
 using Ionic.Zip;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Helpers
 {
     public static class ZipHelper
     {
