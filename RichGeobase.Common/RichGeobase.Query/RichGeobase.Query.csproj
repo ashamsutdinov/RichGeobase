@@ -67,11 +67,7 @@
     <Compile Include="Criterions\Summary\GetSummaryByEssayIdCriterion.cs" />
     <Compile Include="Helpers\OrderedQueryableHelper.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
-    <Compile Include="IDbContext.cs" />
-    <Compile Include="Interface\BusinessEntity.cs" />
-    <Compile Include="Interface\Entity.cs" />
     <Compile Include="Interface\ICriterion.cs" />
-    <Compile Include="Interface\IEntity.cs" />
     <Compile Include="Interface\IEntityContext.cs" />
     <Compile Include="Interface\IMultipleSelectionQuery.cs" />
     <Compile Include="Interface\IQuery.cs" />
@@ -99,6 +95,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GeoLib\GeoLib.csproj">
+      <Project>{9d242814-32da-404a-b21f-a58983ed9263}</Project>
+      <Name>GeoLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

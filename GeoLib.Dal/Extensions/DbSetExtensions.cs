@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+using GeoLib.Dal.Model;
 
-namespace GeoLib.Dal.Model
+namespace GeoLib.Dal.Extensions
 {
     public static class DbSetExtensions
     {

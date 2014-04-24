@@ -236,7 +236,7 @@
       <DependentUpon>201404241824118_ToponymDateIndices.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\DbSetExtensions.cs" />
+    <Compile Include="Extensions\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
     <Compile Include="Model\Entities\BoundingBox.cs" />
     <Compile Include="Model\Entities\City.cs" />

@@ -1,11 +1,13 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using GeoLib.Specification;
 
-namespace RichGeobase.Query.Interface
+namespace GeoLib
 {
     /// <summary>
     /// A basic abstraction for all entity types.
     /// </summary>
-    public abstract class Entity
+    public abstract class Entity : 
+        IEntity
     {
     }
 
@@ -13,7 +15,9 @@ namespace RichGeobase.Query.Interface
     /// A basic abstraction for all entity types with identification.
     /// </summary>
     /// <typeparam name="T">Entity identifier type.</typeparam>
-    public abstract class Entity<T> : Entity, IEntity<T>
+    public abstract class Entity<T> : 
+        Entity, 
+        IEntity<T>
     {
         protected Entity()
         {
@@ -21,7 +25,7 @@ namespace RichGeobase.Query.Interface
         }
 
         #region Implementation of IEntity<T>
-        
+
         [Key]
         public T Id { get; set; }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GeoLib;
 using JetBrains.Annotations;
 
 namespace RichGeobase.Query.Interface

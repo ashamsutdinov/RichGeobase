@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using GeoLib;
 using JetBrains.Annotations;
 using RichGeobase.Query.Criterions;
 using RichGeobase.Query.Helpers;

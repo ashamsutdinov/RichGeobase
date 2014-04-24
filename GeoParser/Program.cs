@@ -24,7 +24,7 @@ namespace GeoParser
                 //new CountriesParsingTask("http://download.geonames.org/export/dump/countryInfo.txt"), 
                 //new AdministrativeUnitsLevel1ParsingTask("http://download.geonames.org/export/dump/admin1CodesASCII.txt"),
                 //new AdministrativeUnitsLevel2ParsingTask("http://download.geonames.org/export/dump/admin2Codes.txt"),
-                new ToponymsParsingTask(@"D:\Dropbox\Work\geobase\geonames\dump\allCountries.txt", 8964309), 
+                new ToponymsParsingTask(@"D:\Dropbox\Work\geobase\geonames\dump\allCountries.txt", 0), 
                 //new ToponymNamesParsingTask("http://download.geonames.org/export/dump/alternateNames.zip"), 
                 //new CitiesParsingTask("http://download.geonames.org/export/dump/cities1000.zip", CitySize.Small), 
                 //new CitiesParsingTask("http://download.geonames.org/export/dump/cities5000.zip", CitySize.Medium), 

@@ -28,7 +28,7 @@ namespace GeoLib.Parsing.GeoNames
             using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
                 var parsed = 0;
-                var lastSavedTFound = StartFrom > 0;
+                var lastSavedTFound = StartFrom == 0;
                 while (!sr.EndOfStream)
                 {
                     using (var ctx = new GeoContext())
