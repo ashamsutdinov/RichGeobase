@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace GeoAPI.Areas.HelpPage.ModelDescriptions
+namespace RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

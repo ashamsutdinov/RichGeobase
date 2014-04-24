@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeoLib.Dal\GeoLib.Dal.csproj">
+    <ProjectReference Include="..\GeoLib\GeoLib.csproj">
       <Project>{9d242814-32da-404a-b21f-a58983ed9263}</Project>
-      <Name>GeoLib.Dal</Name>
+      <Name>GeoLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

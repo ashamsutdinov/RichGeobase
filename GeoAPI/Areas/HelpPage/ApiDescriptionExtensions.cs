@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace GeoAPI.Areas.HelpPage
+namespace RichGeobase.WebApi.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

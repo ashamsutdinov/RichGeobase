@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA228300-D828-4969-9F9F-3A520DF5BA5A}</ProjectGuid>
+    <ProjectGuid>{9D242814-32DA-404A-B21F-A58983ED9263}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GeoLib</RootNamespace>

@@ -10,10 +10,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using GeoAPI.Areas.HelpPage.ModelDescriptions;
-using GeoAPI.Areas.HelpPage.Models;
+using RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions;
+using RichGeobase.WebApi.Areas.HelpPage.Models;
 
-namespace GeoAPI.Areas.HelpPage
+namespace RichGeobase.WebApi.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

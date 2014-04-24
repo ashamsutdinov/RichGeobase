@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace GeoAPI.Areas.HelpPage.ModelDescriptions
+namespace RichGeobase.WebApi.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

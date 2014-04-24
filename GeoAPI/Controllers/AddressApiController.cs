@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace GeoAPI.Controllers
+namespace RichGeobase.WebApi.Controllers
 {
-    public class ValuesController : ApiController
+    public class AddressApiController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()
