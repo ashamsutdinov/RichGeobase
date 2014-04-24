@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using GeoLib.Dal.Model;
 using GeoLib.Helpers;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class TimeZoneHelper
+    public class TimeZonesParsingTask :
+        ParsingTask
     {
-        public static Model.Entities.TimeZone FindTimeZone(this DbSet<Model.Entities.TimeZone> dbset, string id)
+        public TimeZonesParsingTask(string path) :
+            base(new[] { path })
         {
-            var foundTz = dbset.FirstOrDefault(t => t.Id == id || t.Name == id);
-            return foundTz;
         }
 
-        public static void ParseFeature(string path)
+        protected override void ExecuteInternal()
         {
             using (var ctx = new GeoContext())
             {
-                var stream = ResourceHelper.ReadFileContent(path, true);
+                var stream = ResourceHelper.ReadFileContent(Path, true);
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
                 {
                     while (!sr.EndOfStream)
@@ -31,7 +29,7 @@ namespace GeoLib.Dal.Helpers
                         if (ln == null)
                             continue;
 
-                        var parts = ln.Split(new[] {'\t'});
+                        var parts = ln.Split(new[] { '\t' });
                         if (parts.Length < 5)
                             continue;
 

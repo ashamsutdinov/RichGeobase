@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Data.Entity;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using GeoLib.Dal.Extensions;
+using GeoLib.Dal.Helpers;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
 using GeoLib.Helpers;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class AdministrativeUnitHelper
+    public class AdministrativeUnitsLevel2ParsingTask :
+        ParsingTask
     {
-
-        public static void ParseAdmin2Units(string path)
+        public AdministrativeUnitsLevel2ParsingTask(string path) : 
+            base(new []{path})
         {
-            var stream = ResourceHelper.ReadFileContent(path);
+        }
+
+        protected override void ExecuteInternal()
+        {
+            var stream = ResourceHelper.ReadFileContent(Path);
 
             using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
@@ -56,7 +60,7 @@ namespace GeoLib.Dal.Helpers
                                 var ctry = ctx.Countries.GetByCode(coid);
                                 if (ctry != null)
                                 {
-                                    var exists = AdministrativeUnitDbSetExtensions.FindAdministrativeUnit(ctx.AdministrativeUnits, ctry.Id, code, 2);
+                                    var exists = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, code, 2);
                                     if (exists != null)
                                         continue;
 
@@ -77,7 +81,7 @@ namespace GeoLib.Dal.Helpers
                                         tries++;
                                     }
                                     ctx.SaveChanges();
-                                    var aUnit = SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym != null ? (int?)toponym.Id : null, ctx);
+                                    var aUnit = AdministrativeUnitDbSetExtensions.SaveAdministrativeUnit(ctry, code, ascii, name, 2, toponym != null ? (int?)toponym.Id : null, ctx);
                                     if (toponym != null)
                                     {
                                         toponym.Admin1 = possibleParent;

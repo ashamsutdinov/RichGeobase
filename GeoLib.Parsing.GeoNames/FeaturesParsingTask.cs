@@ -1,18 +1,28 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
+using GeoLib.Dal.Extensions;
 using GeoLib.Dal.Model;
 using GeoLib.Helpers;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class FeatureHelper
+    public class FeaturesParsingTask :
+        ParsingTask
     {
-        public static void ParseFeature(string path, string lang)
+        protected string Language { get; private set; }
+        public FeaturesParsingTask(string path, string language) :
+            base(new[] { path, language })
+        {
+            Language = language;
+        }
+
+        protected override void ExecuteInternal()
         {
             using (var ctx = new GeoContext())
             {
-                var stream = ResourceHelper.ReadFileContent(path, true);
+                var stream = ResourceHelper.ReadFileContent(Path, true);
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
                 {
                     while (!sr.EndOfStream)
@@ -28,7 +38,7 @@ namespace GeoLib.Dal.Helpers
 
                         var ids = parts[0];
                         var name = parts[1];
-                        var idparts = ids.Split(new[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
+                        var idparts = ids.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                         if (idparts.Length != 2)
                             continue;
                         var fcid = idparts[0];
@@ -43,9 +53,9 @@ namespace GeoLib.Dal.Helpers
                         }
                         ctx.Features.PrepareToSave(feature);
 
-                        if (!string.IsNullOrEmpty(lang))
+                        if (!string.IsNullOrEmpty(Language))
                         {
-                            var elang = ctx.Languages.FindLanguage(lang);
+                            var elang = ctx.Languages.FindLanguage(Language);
                             if (elang != null)
                             {
                                 var fname = ctx.FeatureNames.GetOrCreate(id, elang.Id);

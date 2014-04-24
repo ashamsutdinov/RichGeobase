@@ -56,16 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\AdministrativeUnitDbSetExtensions.cs" />
+    <Compile Include="Extensions\LanguagesDbSetExtensions.cs" />
+    <Compile Include="Extensions\TimeZonesDbSetExtensions.cs" />
     <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
     <Compile Include="Helpers\CityHelper.cs" />
     <Compile Include="Helpers\ContinentHelper.cs" />
     <Compile Include="Helpers\CountryHelper.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
-    <Compile Include="Helpers\FeatureClassHelper.cs" />
-    <Compile Include="Helpers\FeatureHelper.cs" />
-    <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Helpers\LocationHelper.cs" />
-    <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
     <Compile Include="Migrations\201404211759525_Initial.cs" />
     <Compile Include="Migrations\201404211759525_Initial.Designer.cs">
@@ -261,11 +260,6 @@
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\GeoRes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GeoRes.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -401,43 +395,6 @@
     <EmbeddedResource Include="Migrations\201404241824118_ToponymDateIndices.resx">
       <DependentUpon>201404241824118_ToponymDateIndices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\GeoRes.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GeoRes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\fclasses.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_bg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_en.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_nb.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_nn.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_no.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_ru.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\featureCodes_sv.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\continents.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\iso-languagecodes.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\timeZones.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeoLib.GeoNames\GeoLib.GeoNames.csproj">

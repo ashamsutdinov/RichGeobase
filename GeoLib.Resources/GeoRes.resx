@@ -117,40 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="continents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>continents.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="fclasses" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>fclasses.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="featureCodes_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_bg.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="featureCodes_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="featureCodes_nb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_nb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="featureCodes_nn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_nn.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="featureCodes_no" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_no.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="featureCodes_ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_ru.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="featureCodes_sv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>featureCodes_sv.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="iso_languagecodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>iso-languagecodes.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="timeZones" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>timeZones.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
   <data name="CountryHelper_ParseCountries_Undefined_language__0_" xml:space="preserve">
     <value>Undefined language {0}</value>
   </data>

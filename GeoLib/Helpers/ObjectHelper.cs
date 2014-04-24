@@ -485,7 +485,7 @@ namespace GeoLib.Helpers
         /// <param name="castToType">Тип, в который требуется преобразовать</param>
         /// <returns>Объект в целевом типе</returns>
         [DebuggerStepThrough]
-        public static object Cast(this object obj, Type castToType)
+        public static object CastToType(this object obj, Type castToType)
         {
             var genericMethod = CastToTypeMethod.MakeGenericMethod(castToType);
             var castedObject = genericMethod.Invoke(null, new[] { obj });

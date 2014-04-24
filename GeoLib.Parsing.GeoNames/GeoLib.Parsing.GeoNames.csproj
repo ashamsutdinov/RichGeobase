@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,10 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrativeUnitsLevel1ParsingTask.cs" />
+    <Compile Include="AdministrativeUnitsLevel2ParsingTask.cs" />
+    <Compile Include="FeatureClassesParsingTask.cs" />
+    <Compile Include="FeaturesParsingTask.cs" />
     <Compile Include="LanguagesParsingTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeZonesParsingTask.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GeoLib.Dal\GeoLib.Dal.csproj">
+      <Project>{3B2723BF-60C7-48C3-A437-E321A852905C}</Project>
+      <Name>GeoLib.Dal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeoLib.GeoNames\GeoLib.GeoNames.csproj">
       <Project>{47c87d72-7132-4882-951b-7bcb385160a5}</Project>
       <Name>GeoLib.GeoNames</Name>
@@ -51,6 +67,14 @@
       <Project>{D8EEC69E-1618-4894-959D-3BAE12057AE3}</Project>
       <Name>GeoLib.Parsing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeoLib\GeoLib.csproj">
+      <Project>{9D242814-32DA-404A-B21F-A58983ED9263}</Project>
+      <Name>GeoLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
