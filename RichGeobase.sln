@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Parsing.KLADR", "Geo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Resources", "GeoLib.Resources\GeoLib.Resources.csproj", "{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Query.Dal", "RichGeobase.Common\RichGeobase.Query.Dal\RichGeobase.Query.Dal.csproj", "{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,5 +117,6 @@ Global
 		{C5038B7F-F62E-4134-AA38-0350FB85631A} = {1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}
 		{B1D6604D-4CB9-44F5-B428-631445927DAC} = {1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618} = {53916543-6B63-41F7-8676-8C2C74ADD624}
+		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF} = {53916543-6B63-41F7-8676-8C2C74ADD624}
 	EndGlobalSection
 EndGlobal

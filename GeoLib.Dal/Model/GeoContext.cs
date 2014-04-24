@@ -1,10 +1,15 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
 using GeoLib.Dal.Model.Entities;
+using GeoLib.Specification;
 
 namespace GeoLib.Dal.Model
 {
     public class GeoContext : 
-        DbContext
+        DbContext,
+        IDbContext,
+        IEntityContext 
     {
         public GeoContext() :
             base("name=GeoDB")
@@ -51,6 +56,29 @@ namespace GeoLib.Dal.Model
             modelBuilder.Entity<Toponym>().HasOptional(t => t.Country).WithMany(t => t.Toponyms);
             modelBuilder.Entity<Country>().HasMany(t => t.Neighbors).WithMany(t => t.NeighborTo);
             modelBuilder.Entity<Country>().HasMany(t => t.Cities).WithRequired(c => c.Country);
+        }
+
+        public IQueryable<TResult> Query<TResult>() 
+            where TResult : class
+        {
+            return Set<TResult>();
+        }
+
+        public void Add<TEntity>(TEntity entity) 
+            where TEntity : Entity
+        {
+            Set<TEntity>().AddOrUpdate(entity);
+        }
+
+        public void Delete<TEntity>(TEntity entity) 
+            where TEntity : Entity
+        {
+            Set<TEntity>().Remove(entity);
+        }
+
+        public void Commit()
+        {
+            SaveChanges();
         }
     }
 }

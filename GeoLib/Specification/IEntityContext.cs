@@ -1,9 +1,11 @@
-using GeoLib;
+using System;
 using JetBrains.Annotations;
 
-namespace RichGeobase.Query.Interface
+namespace GeoLib.Specification
 {
-    public interface IEntityContext
+    public interface IEntityContext : 
+        IUnitOfWork,
+        IDisposable
     {
         /// <summary>
         /// Marks an entity to be saved during Commit phase in the current unit of work.

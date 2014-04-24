@@ -68,12 +68,10 @@
     <Compile Include="Helpers\OrderedQueryableHelper.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Interface\ICriterion.cs" />
-    <Compile Include="Interface\IEntityContext.cs" />
     <Compile Include="Interface\IEntityQueryContext.cs" />
     <Compile Include="Interface\IMultipleSelectionQuery.cs" />
     <Compile Include="Interface\IQuery.cs" />
     <Compile Include="Interface\ISingleSelectionQuery.cs" />
-    <Compile Include="Interface\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\ValueObject.cs" />
     <Compile Include="BaseGridQuery.cs" />

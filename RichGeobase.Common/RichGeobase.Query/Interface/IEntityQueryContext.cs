@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using GeoLib.Specification;
 using JetBrains.Annotations;
 
 namespace RichGeobase.Query.Interface
 {
-    public interface IEntityQueryContext
+    public interface IEntityQueryContext : 
+        IEntityContext
     {
-        
-
         /// <summary>
         /// Runs a query that produces a count integer result.
         /// </summary>
