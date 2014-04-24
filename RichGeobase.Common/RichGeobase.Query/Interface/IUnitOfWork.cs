@@ -8,7 +8,7 @@ namespace RichGeobase.Query.Interface
     /// <remarks>
     /// The main goal of unit of work is to separate one set of changes from another. Each unit of work represents a single transaction.
     /// </remarks>
-    public interface IUnitOfWork : IEntityContext, IDisposable
+    public interface IUnitOfWork : IEntityQueryContext, IDisposable
     {
         /// <summary>
         /// Commits any changes made during current unit of work scope.

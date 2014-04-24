@@ -69,6 +69,7 @@
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Interface\ICriterion.cs" />
     <Compile Include="Interface\IEntityContext.cs" />
+    <Compile Include="Interface\IEntityQueryContext.cs" />
     <Compile Include="Interface\IMultipleSelectionQuery.cs" />
     <Compile Include="Interface\IQuery.cs" />
     <Compile Include="Interface\ISingleSelectionQuery.cs" />
