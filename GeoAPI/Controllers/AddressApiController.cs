@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace RichGeobase.WebApi.Controllers
 {
-    public class ValuesController : ApiController
+    public class AddressApiController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()

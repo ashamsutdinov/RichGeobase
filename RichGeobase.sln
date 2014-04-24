@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Query", "RichGe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RichGeobase.Hosts", "RichGeobase.Hosts", "{1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Address", "RichGeobase.Components\RichGeobase.Address\RichGeobase.Address.csproj", "{F120A952-E764-47DA-8E1A-1EB33DF854A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,12 +39,17 @@ Global
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F120A952-E764-47DA-8E1A-1EB33DF854A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F120A952-E764-47DA-8E1A-1EB33DF854A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F120A952-E764-47DA-8E1A-1EB33DF854A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F120A952-E764-47DA-8E1A-1EB33DF854A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9D70E71A-E11B-4B54-96F8-3D143E3DD618} = {53916543-6B63-41F7-8676-8C2C74ADD624}
 		{B1D6604D-4CB9-44F5-B428-631445927DAC} = {1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}
+		{9D70E71A-E11B-4B54-96F8-3D143E3DD618} = {53916543-6B63-41F7-8676-8C2C74ADD624}
+		{F120A952-E764-47DA-8E1A-1EB33DF854A2} = {53916543-6B63-41F7-8676-8C2C74ADD624}
 	EndGlobalSection
 EndGlobal

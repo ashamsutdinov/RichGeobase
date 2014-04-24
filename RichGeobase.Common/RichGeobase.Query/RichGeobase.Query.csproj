@@ -65,6 +65,9 @@
     <Compile Include="Criterions\PaymentCriterions\GetPaymentsByUserCriterion.cs" />
     <Compile Include="Criterions\PaymentCriterions\PaymentSortColumn.cs" />
     <Compile Include="Criterions\Summary\GetSummaryByEssayIdCriterion.cs" />
+    <Compile Include="Helpers\OrderedQueryableHelper.cs" />
+    <Compile Include="Helpers\PropertyHelper.cs" />
+    <Compile Include="IDbContext.cs" />
     <Compile Include="Interface\BusinessEntity.cs" />
     <Compile Include="Interface\Entity.cs" />
     <Compile Include="Interface\ICriterion.cs" />
@@ -76,8 +79,25 @@
     <Compile Include="Interface\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\ValueObject.cs" />
+    <Compile Include="BaseGridQuery.cs" />
+    <Compile Include="BaseQuery.cs" />
+    <Compile Include="QueryExamples\CheckApplicationUserQuery.cs" />
+    <Compile Include="QueryExamples\CheckEssayByTitleAndStudentCriterion.cs" />
+    <Compile Include="QueryExamples\CheckUserQuery.cs" />
+    <Compile Include="QueryExamples\GetAllEssaysQuery.cs" />
+    <Compile Include="QueryExamples\GetAllPaymentsCountForGridQuery.cs" />
+    <Compile Include="QueryExamples\GetApplicationuserById.cs" />
+    <Compile Include="QueryExamples\GetCountForGridQuery.cs" />
+    <Compile Include="QueryExamples\GetCountPageQuery.cs" />
+    <Compile Include="QueryExamples\GetEssayByIdQuery.cs" />
+    <Compile Include="QueryExamples\GetEssayByTitleAndStudentQuery.cs" />
+    <Compile Include="QueryExamples\GetEssayForIndividualUserAdminGridQuery.cs" />
+    <Compile Include="QueryExamples\GetEssaysPagedAndSortedQuery.cs" />
+    <Compile Include="QueryExamples\GetFeedbackMessageByIdQuery.cs" />
+    <Compile Include="QueryExamples\GetUserByIdQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
