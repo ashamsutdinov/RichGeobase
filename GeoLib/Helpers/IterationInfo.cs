@@ -1,4 +1,4 @@
-﻿namespace GeoLib.Dal.Helpers
+﻿namespace GeoLib.Helpers
 {
     /// <summary>
     /// Информация об итерации с данными о следующем и предыдущем элементе

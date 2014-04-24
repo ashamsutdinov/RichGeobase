@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Helpers
 {
     public static class CollectionHelper
     {

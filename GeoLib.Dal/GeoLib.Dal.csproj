@@ -59,93 +59,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeoNames\GeoNamesHelper.cs" />
-    <Compile Include="GeoNames\NGeo\ExtensionMethods.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\AlternateName.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\Country.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\GeoNamesClient.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\GeoNamesContainer.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\Hierarchy.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\IConsumeGeoNames.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\IContainGeoNames.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\IInvokeGeoNamesServices.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\NearbyPlaceNameFinder.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\PostalCode.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\PostalCodedCountry.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\PostalCodeLookup.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\PostalCodeResults.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\Results.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\ResultStyle.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\SearchOptions.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\SearchType.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\Status.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\TimeZone.cs" />
-    <Compile Include="GeoNames\NGeo\GeoNames\Toponym.cs" />
-    <Compile Include="GeoNames\NGeo\GlobalSuppressions.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Admin.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\BoundingBox.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\ConcordanceNamespace.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\ConcordanceResponse.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\GeoPlanetClient.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\GeoPlanetContainer.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\IConsumeGeoPlanet.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\IContainGeoPlanet.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\IInvokeGeoPlanetServices.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonAdminAttributes.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonConverter.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonLocalityAttributes.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonPlace.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonPlaceType.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Json\JsonPlaceTypeAttributes.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Locality.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Place.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\PlaceResponse.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Places.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\PlacesResponse.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\PlaceType.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\PlaceTypes.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\PlaceTypesResponse.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\Point.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\GeoPlanet\RequestView.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\BossContainer.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\BossResponse.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\BoundingBox.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\EndpointUrlBuilder.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\Flag.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\GFlag.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\IConsumePlaceFinder.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\IContainPlaceFinder.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\OAuthClient.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceBy.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByCoordinates.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByExtensions.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByFreeformText.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByFullyParsedAddress.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByMultilineAddress.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByName.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceByWoeId.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceFinderClient.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\PlaceFinderContainer.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\QualityCategory.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\QualityDescription.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\QualityExtensions.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\Response.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\Result.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\ResultSet.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_IInvokePlaceFinderServices.cs" />
-    <Compile Include="GeoNames\NGeo\Yahoo\PlaceFinder\_Deprecated\_ResultSet.cs" />
     <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
     <Compile Include="Helpers\CityHelper.cs" />
-    <Compile Include="Helpers\CollectionHelper.cs" />
     <Compile Include="Helpers\ContinentHelper.cs" />
     <Compile Include="Helpers\CountryHelper.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Helpers\FeatureClassHelper.cs" />
     <Compile Include="Helpers\FeatureHelper.cs" />
-    <Compile Include="Helpers\IterationInfo.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Helpers\LocationHelper.cs" />
-    <Compile Include="Helpers\ObjectHelper.cs" />
     <Compile Include="Helpers\TimeZoneHelper.cs" />
     <Compile Include="Helpers\ToponymHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
@@ -527,6 +449,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\timeZones.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoLib.GeoNames\GeoLib.GeoNames.csproj">
+      <Project>{47c87d72-7132-4882-951b-7bcb385160a5}</Project>
+      <Name>GeoLib.GeoNames</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoLib\GeoLib.csproj">
+      <Project>{ca228300-d828-4969-9f9f-3a520df5ba5a}</Project>
+      <Name>GeoLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Parsers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
