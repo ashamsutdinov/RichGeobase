@@ -57,15 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\AdministrativeUnitDbSetExtensions.cs" />
+    <Compile Include="Extensions\CountriesDbSetExtensions.cs" />
+    <Compile Include="Extensions\CurrenciesDbSetExtensions.cs" />
     <Compile Include="Extensions\LanguagesDbSetExtensions.cs" />
+    <Compile Include="Extensions\LocationsDbSetExtensions.cs" />
     <Compile Include="Extensions\TimeZonesDbSetExtensions.cs" />
-    <Compile Include="Helpers\AdministrativeUnitHelper.cs" />
-    <Compile Include="Helpers\CityHelper.cs" />
-    <Compile Include="Helpers\ContinentHelper.cs" />
-    <Compile Include="Helpers\CountryHelper.cs" />
-    <Compile Include="Helpers\CurrencyHelper.cs" />
-    <Compile Include="Helpers\LocationHelper.cs" />
-    <Compile Include="Helpers\ToponymHelper.cs" />
+    <Compile Include="Extensions\ToponymsDbSetExtensions.cs" />
     <Compile Include="Migrations\201404211759525_Initial.cs" />
     <Compile Include="Migrations\201404211759525_Initial.Designer.cs">
       <DependentUpon>201404211759525_Initial.cs</DependentUpon>

@@ -1,17 +1,27 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using GeoLib.Dal.Extensions;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
 using GeoLib.Helpers;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class CityHelper
+    public class CitiesParsingTask :
+        ParsingTask
     {
-        public static void ParseCities(string path, CitySize size)
+        protected CitySize Size { get; private set; }
+
+        public CitiesParsingTask(string path, CitySize size) : 
+            base(new object[]{path, size})
         {
-            var stream = ResourceHelper.ReadFileContent(path);
+            Size = size;
+        }
+
+        protected override void ExecuteInternal()
+        {
+            var stream = ResourceHelper.ReadFileContent(Path);
             using (var ctx = new GeoContext())
             {
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
@@ -48,7 +58,7 @@ namespace GeoLib.Dal.Helpers
                                     var city = ctx.Cities.GetOrCreate(id);
                                     city.Entity.Id = id;
                                     city.Entity.Country = ctry;
-                                    city.Entity.Size = size;
+                                    city.Entity.Size = Size;
                                     ctx.Cities.PrepareToSave(city);
                                 }
                             }

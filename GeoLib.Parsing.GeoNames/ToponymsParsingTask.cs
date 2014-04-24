@@ -1,113 +1,34 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using GeoLib.Dal.Extensions;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
-using GeoLib.GeoNames;
 using GeoLib.Helpers;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class ToponymHelper
+    public class ToponymsParsingTask :
+        ParsingTask
     {
-        public static Toponym FindToponym(this DbSet<Toponym> dbset, string name)
+        protected long StartFrom { get; private set; }
+
+        public ToponymsParsingTask(string path, long startFrom = 0) :
+            base(new[] { path })
         {
-            var found = dbset.FirstOrDefault(t => t.Name == name || t.ToponymName == name);
-            return found;
+            StartFrom = startFrom;
         }
 
-        public static void ParseToponymNames(string path)
+        protected override void ExecuteInternal()
         {
-            var stream = ResourceHelper.ReadFileContent(path);
-            using (var ctx = new GeoContext())
-            {
-                using (var sr = new StreamReader(stream, Encoding.UTF8))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        try
-                        {
-                            var line = sr.ReadLine();
-                            if (line == null)
-                                continue;
-
-                            if (line.StartsWith("#"))
-                                continue;
-
-                            //Console.WriteLine(line);
-
-                            var parts = line.Split(new[] { '\t' });
-                            if (parts.Length < 4)
-                                continue;
-
-                            var sid = parts[1];
-                            if (string.IsNullOrEmpty(sid))
-                                continue;
-
-                            var id = int.Parse(sid);
-
-                            var t = ctx.Toponyms.GetById(id);
-                            if (t == null)
-                                continue;
-
-                            var lang = parts[2];
-                            var value = parts[3];
-
-                            switch (lang)
-                            {
-                                case "post":
-                                    t.PostalCode = value;
-                                    break;
-                                case "iata":
-                                    t.IATA = value;
-                                    break;
-                                case "icao":
-                                    t.ICAO = value;
-                                    break;
-                                case "faac":
-                                    t.FAAC = value;
-                                    break;
-                                default:
-                                    if (lang.Length < 4 || lang.Contains("-") || lang.Contains("/"))
-                                    {
-                                        var language = ctx.Languages.FindLanguage(lang);
-                                        if (language == null)
-                                            continue;
-
-                                        var ename = ctx.ToponymNames.GetOrCreate(t.Id, language.Id);
-                                        ename.Entity.ToponymId = t.Id;
-                                        ename.Entity.LanguageId = language.Id;
-                                        ename.Entity.Name = value;
-                                        ctx.ToponymNames.PrepareToSave(ename);
-                                    }
-                                    break;
-                            }
-
-                            ctx.SaveChanges();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.ToString());
-                            Console.ReadKey();
-                        }
-                    }
-                }
-            }
-        }
-
-        public static void ParseToponyms(string path)
-        {
-            var stream = ResourceHelper.ReadFileContent(path);
+            var stream = ResourceHelper.ReadFileContent(Path);
 
             using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
-                const int lastTId = 7084827;
                 var parsed = 0;
-                var lastSavedTFound = false;
+                var lastSavedTFound = StartFrom > 0;
                 while (!sr.EndOfStream)
                 {
                     using (var ctx = new GeoContext())
@@ -137,7 +58,7 @@ namespace GeoLib.Dal.Helpers
 
                             if (!lastSavedTFound)
                             {
-                                lastSavedTFound = id == lastTId;
+                                lastSavedTFound = id == StartFrom;
                             }
                             if (!lastSavedTFound)
                                 continue;
@@ -186,7 +107,7 @@ namespace GeoLib.Dal.Helpers
                                 {
                                     ele = int.Parse(sele);
                                 }
-                                var location = LocationHelper.SaveToponymLocation(lat, lng, ele, ctx);
+                                var location = LocationsDbSetExtensions.SaveToponymLocation(lat, lng, ele, ctx);
                                 t.Location = location;
                             }
 
@@ -231,7 +152,7 @@ namespace GeoLib.Dal.Helpers
                                     var adm1Name = adm1ShouldBeSaved ? existingUnit != null ? name : adm1Code : null;
                                     var adm1TName = adm1ShouldBeSaved ? existingUnit != null ? tname : adm1Code : null;
                                     var adm1TId = adm1ShouldBeSaved ? (int?)id : null;
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm1Code, adm1Name, adm1TName, 1, adm1TId, ctx);
+                                    var aUnit = AdministrativeUnitDbSetExtensions.SaveAdministrativeUnit(ctry, adm1Code, adm1Name, adm1TName, 1, adm1TId, ctx);
                                     t.Admin1 = aUnit;
                                 }
                                 var isAdm2 = !string.IsNullOrEmpty(adm2Code);
@@ -242,7 +163,7 @@ namespace GeoLib.Dal.Helpers
                                     var adm2Name = adm2ShouldBeSaved ? existingUnit != null ? name : adm2Code : null;
                                     var adm2TName = adm2ShouldBeSaved ? existingUnit != null ? tname : adm2Code : null;
                                     var adm2TId = adm2ShouldBeSaved ? (int?)id : null;
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm2Code, adm2Name, adm2TName, 2, adm2TId, ctx);
+                                    var aUnit = AdministrativeUnitDbSetExtensions.SaveAdministrativeUnit(ctry, adm2Code, adm2Name, adm2TName, 2, adm2TId, ctx);
                                     t.Admin2 = aUnit;
                                 }
                                 var isAdm3 = !string.IsNullOrEmpty(adm3Code);
@@ -253,7 +174,7 @@ namespace GeoLib.Dal.Helpers
                                     var adm3Name = adm3ShouldBeSaved ? existingUnit != null ? name : adm3Code : null;
                                     var adm3TName = adm3ShouldBeSaved ? existingUnit != null ? tname : adm3Code : null;
                                     var adm3TId = adm3ShouldBeSaved ? (int?)id : null;
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm3Name, adm3TName, 3, adm3TId, ctx);
+                                    var aUnit = AdministrativeUnitDbSetExtensions.SaveAdministrativeUnit(ctry, adm3Code, adm3Name, adm3TName, 3, adm3TId, ctx);
                                     t.Admin3 = aUnit;
                                 }
                                 ctx.SaveChanges();
@@ -263,7 +184,7 @@ namespace GeoLib.Dal.Helpers
                                     var adm4Name = name;
                                     var adm4TName = tname;
                                     var adm4TId = (int?)id;
-                                    var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm4Name, adm4TName, 4, adm4TId, ctx);
+                                    var aUnit = AdministrativeUnitDbSetExtensions.SaveAdministrativeUnit(ctry, adm3Code, adm4Name, adm4TName, 4, adm4TId, ctx);
                                     t.Admin4 = aUnit;
                                 }
                                 if (isAdm4)
@@ -340,113 +261,6 @@ namespace GeoLib.Dal.Helpers
                     }
                 }
             }
-        }
-
-        public static Toponym SaveToponym(int id, Country country, Toponym parent, GeoContext context, bool saveAdmUnits = true)
-        {
-            var ctx = context ?? new GeoContext();
-
-            var requested = GeoNamesHelper.GetToponym(id);
-            if (requested == null)
-                return null;
-            var tEntity = ctx.Toponyms.GetOrCreate(id);
-            var t = tEntity.Entity;
-
-            if (tEntity.IsNew)
-            {
-                t.DateCreated = DateTime.UtcNow;
-            }
-            t.DateUpdated = DateTime.UtcNow;
-
-            t.Id = requested.GeoNameId;
-            t.Location = LocationHelper.SaveToponymLocation(requested, ctx);
-
-            if (country != null && saveAdmUnits)
-            {
-                if (!string.IsNullOrEmpty(requested.Admin1Code))
-                    t.Admin1 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin1Code, requested.Admin1Name, null, 1, null, ctx);
-                if (!string.IsNullOrEmpty(requested.Admin2Code))
-                    t.Admin2 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin2Code, requested.Admin2Name, null, 2, null, ctx);
-                if (!string.IsNullOrEmpty(requested.Admin3Code))
-                    t.Admin3 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin3Code, requested.Admin3Name, null, 3, null, ctx);
-                if (!string.IsNullOrEmpty(requested.Admin4Code))
-                    t.Admin4 = AdministrativeUnitHelper.SaveAdministrativeUnit(country, requested.Admin4Code, requested.Admin4Name, null, 4, null, ctx);
-            }
-
-            t.Country = country;
-            t.Parent = parent;
-            if (!string.IsNullOrEmpty(requested.ContinentCode))
-            {
-                var continent = ctx.Continents.GetById(requested.ContinentCode);
-                t.Continent = continent;
-            }
-            if (!string.IsNullOrEmpty(requested.FeatureClassCode))
-            {
-                t.FeatureClassId = requested.FeatureClassCode;
-            }
-            if (!string.IsNullOrEmpty(requested.FeatureCode))
-            {
-                t.FeatureId = requested.FeatureCode;
-            }
-            t.Name = requested.Name;
-            t.ToponymName = requested.ToponymName;
-            t.Population = requested.Population;
-
-            var nlang = ctx.Languages.FindLanguage("_");
-            if (nlang != null)
-            {
-                var ename = ctx.ToponymNames.GetOrCreate(t.Id, nlang.Id);
-                ename.Entity.ToponymId = t.Id;
-                ename.Entity.LanguageId = nlang.Id;
-                ename.Entity.Name = requested.Name;
-                ctx.ToponymNames.PrepareToSave(ename);
-            }
-
-            foreach (var name in requested.AlternateNames)
-            {
-                if (!string.IsNullOrEmpty(name.Language))
-                {
-                    switch (name.Language)
-                    {
-                        case "post":
-                            t.PostalCode = name.Name;
-                            break;
-                        case "iata":
-                            t.IATA = name.Name;
-                            break;
-                        case "icao":
-                            t.ICAO = name.Name;
-                            break;
-                        case "faac":
-                            t.FAAC = name.Name;
-                            break;
-                        default:
-                            if (name.Language.Length < 4 || name.Language.Contains("-"))
-                            {
-                                var language = ctx.Languages.FindLanguage(name.Language);
-                                if (language == null)
-                                    continue;
-
-                                var ename = ctx.ToponymNames.GetOrCreate(t.Id, language.Id);
-                                ename.Entity.ToponymId = t.Id;
-                                ename.Entity.LanguageId = language.Id;
-                                ename.Entity.Name = name.Name;
-                                ctx.ToponymNames.PrepareToSave(ename);
-                            }
-                            break;
-                    }
-                }
-            }
-
-            ctx.Toponyms.PrepareToSave(tEntity);
-
-            if (context == null)
-            {
-                ctx.SaveChanges();
-                ctx.Dispose();
-            }
-
-            return t;
         }
     }
 }

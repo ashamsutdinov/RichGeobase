@@ -1,9 +1,9 @@
 ﻿using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Dal.Extensions
 {
-    public static class CurrencyHelper
+    public static class CurrenciesDbSetExtensions
     {
         public static Currency SaveCurrency(string id, string name, GeoContext context)
         {

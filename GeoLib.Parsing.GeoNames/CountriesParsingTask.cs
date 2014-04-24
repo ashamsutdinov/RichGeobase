@@ -1,81 +1,34 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using GeoLib.Dal.Extensions;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
-using GeoLib.Dal.Resources;
 using GeoLib.Helpers;
-using Currency = GeoLib.Dal.Model.Entities.Currency;
+using GeoLib.Resources;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Parsing.GeoNames
 {
-    public static class CountryHelper
+    public class CountriesParsingTask :
+        ParsingTask
     {
-        public static Country GetByCode(this DbSet<Country> dbset, string code)
+        protected bool Forsed { get; private set; }
+
+        protected bool SaveToponym { get; private set; }
+
+        public CountriesParsingTask(string path, bool forsed = false, bool saveToponym = true)
+            : base(new object[] { path, forsed, saveToponym })
         {
-            var found = dbset.FirstOrDefault(c => c.Code == code);
-            return found;
+            Forsed = forsed;
+            SaveToponym = saveToponym;
         }
 
-        public static void FillCapitalCities(string path)
+        protected override void ExecuteInternal()
         {
-            var stream = ResourceHelper.ReadFileContent(path);
-            using (var ctx = new GeoContext())
-            {
-                using (var sr = new StreamReader(stream, Encoding.UTF8))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        try
-                        {
-                            var line = sr.ReadLine();
-                            if (line == null)
-                                continue;
-
-                            if (line.StartsWith("#"))
-                                continue;
-
-                            Console.WriteLine(line);
-
-                            var parts = line.Split(new[] { '\t' });
-                            if (parts.Length < 19)
-                                continue;
-
-                            var capital = parts[5];
-                            var sid = parts[16];
-                            if (string.IsNullOrEmpty(sid))
-                                continue;
-                            var id = int.Parse(sid);
-                            var country = ctx.Countries.GetById(id);
-                            if (country != null)
-                            {
-                                var possibleCapitalCity = ctx.Toponyms.FindToponym(capital);
-                                if (possibleCapitalCity != null && possibleCapitalCity.CountryId == id)
-                                {
-                                    var city = ctx.Cities.GetById(possibleCapitalCity.Id);
-                                    country.CapitalCity = city;
-                                }
-
-                                ctx.SaveChanges();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.ToString());
-                            Console.ReadKey();
-                        }
-                    }
-                }
-            }
-        }
-
-        public static void ParseCountries(string path, bool forsed = false, bool saveToponym = true)
-        {
-            var stream = ResourceHelper.ReadFileContent(path);
+            var stream = ResourceHelper.ReadFileContent(Path);
             using (var ctx = new GeoContext())
             {
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
@@ -138,7 +91,7 @@ namespace GeoLib.Dal.Helpers
                         //var eqfips = parts[18];
 
                         var country = ctx.Countries.GetOrCreate(id);
-                        if (!country.IsNew && !forsed)
+                        if (!country.IsNew && !Forsed)
                         {
                             var t = ctx.Toponyms.GetById(country.Entity.Id);
                             if (t != null && t.DateUpdated.GetValueOrDefault().AddDays(7) > DateTime.UtcNow)
@@ -151,17 +104,17 @@ namespace GeoLib.Dal.Helpers
                         Currency currency = null;
                         if (!string.IsNullOrEmpty(currc))
                         {
-                            currency = CurrencyHelper.SaveCurrency(currc, curr, ctx);
+                            currency = CurrenciesDbSetExtensions.SaveCurrency(currc, curr, ctx);
                         }
                         var c = country.Entity;
 
-                        if (saveToponym)
+                        if (SaveToponym)
                         {
                             var tries = 0;
-                            var toponym = ToponymHelper.SaveToponym(id, null, null, ctx);
+                            var toponym = ToponymsDbSetExtensions.SaveToponym(id, null, null, ctx);
                             while (toponym == null && tries < 10)
                             {
-                                toponym = ToponymHelper.SaveToponym(id, null, null, ctx);
+                                toponym = ToponymsDbSetExtensions.SaveToponym(id, null, null, ctx);
                                 Thread.Sleep(100);
                                 tries++;
                             }
@@ -192,7 +145,7 @@ namespace GeoLib.Dal.Helpers
                         {
                             if (c.Neighbors.Any(ct => ct.Code == nbr))
                                 continue;
-                            var nctrry = GetByCode(ctx.Countries, nbr);
+                            var nctrry = ctx.Countries.GetByCode(nbr);
                             if (nctrry != null)
                             {
                                 c.Neighbors.Add(nctrry);

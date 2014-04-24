@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
 using GeoLib.Dal.Extensions;
-using GeoLib.Dal.Helpers;
 using GeoLib.Dal.Model;
 using GeoLib.Helpers;
 
@@ -65,10 +63,10 @@ namespace GeoLib.Parsing.GeoNames
 
                                     var tid = int.Parse(stid);
                                     var tries = 0;
-                                    var toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx, false);
+                                    var toponym = ToponymsDbSetExtensions.SaveToponym(tid, ctry, null, ctx, false);
                                     while (toponym == null && tries < 10)
                                     {
-                                        toponym = ToponymHelper.SaveToponym(tid, ctry, null, ctx, false);
+                                        toponym = ToponymsDbSetExtensions.SaveToponym(tid, ctry, null, ctx, false);
                                         Thread.Sleep(100);
                                         tries++;
                                     }

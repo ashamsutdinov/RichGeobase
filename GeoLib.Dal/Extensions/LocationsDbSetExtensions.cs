@@ -3,9 +3,9 @@ using System.Linq;
 using GeoLib.Dal.Model;
 using GeoLib.Dal.Model.Entities;
 
-namespace GeoLib.Dal.Helpers
+namespace GeoLib.Dal.Extensions
 {
-    public static class LocationHelper
+    public static class LocationsDbSetExtensions
     {
         public static Location FindLocation(this DbSet<Location> dbset, double? latitude, double? longitude)
         {

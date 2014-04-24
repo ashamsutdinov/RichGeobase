@@ -48,11 +48,17 @@
   <ItemGroup>
     <Compile Include="AdministrativeUnitsLevel1ParsingTask.cs" />
     <Compile Include="AdministrativeUnitsLevel2ParsingTask.cs" />
+    <Compile Include="CitiesParsingTask.cs" />
+    <Compile Include="ContinentsParsingTask.cs" />
+    <Compile Include="CountriesParsingTask.cs" />
     <Compile Include="FeatureClassesParsingTask.cs" />
     <Compile Include="FeaturesParsingTask.cs" />
+    <Compile Include="FillCapitalCitiesParsingTask.cs" />
     <Compile Include="LanguagesParsingTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeZonesParsingTask.cs" />
+    <Compile Include="ToponymNamesParsingTask.cs" />
+    <Compile Include="ToponymsParsingTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeoLib.Dal\GeoLib.Dal.csproj">
@@ -66,6 +72,10 @@
     <ProjectReference Include="..\GeoLib.Parsing\GeoLib.Parsing.csproj">
       <Project>{D8EEC69E-1618-4894-959D-3BAE12057AE3}</Project>
       <Name>GeoLib.Parsing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeoLib.Resources\GeoLib.Resources.csproj">
+      <Project>{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}</Project>
+      <Name>GeoLib.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeoLib\GeoLib.csproj">
       <Project>{9D242814-32DA-404A-B21F-A58983ED9263}</Project>
