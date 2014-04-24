@@ -1,4 +1,4 @@
-﻿namespace GeoLib.Model.Entities
+﻿namespace GeoLib.Dal.Model.Entities
 {
     public enum CitySize
     {

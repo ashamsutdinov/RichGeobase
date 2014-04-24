@@ -1,35 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using GeoLib.Migrations;
 
-namespace GeoLib.Model.Entities
+namespace GeoLib.Dal.Model.Entities
 {
-    public class ToponymTag
-    {
-        public const string KladrIdKey = "KLADR_ID";
-
-        [Key, Column(Order = 1)]
-        public int ToponymId { get; set; }
-
-        [ForeignKey("ToponymId")]
-        public Toponym Toponym { get; set; }
-
-        [Key, Column(Order = 2)]
-        public string Key { get; set; }
-
-        [Index, StringLength(256)]
-        public string Value { get; set; }
-    }
     public class Toponym
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        [Column(TypeName = "DATETIME2")]
+        [Index, Column(TypeName = "DATETIME2")]
         public DateTime DateCreated { get; set; }
 
-        [Column(TypeName = "DATETIME2")]
+        [Index, Column(TypeName = "DATETIME2")]
         public DateTime? DateUpdated { get; set; }
 
         [Index, StringLength(256)]
@@ -111,7 +94,7 @@ namespace GeoLib.Model.Entities
 
         public string FAAC { get; set; }
 
-        [Column(TypeName = "datetime2")]
+        [Index, Column(TypeName = "datetime2")]
         public DateTime? DateSourceUpdated { get; set; }
     }
 }

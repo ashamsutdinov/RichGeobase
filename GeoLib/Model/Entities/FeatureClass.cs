@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GeoLib.Model.Entities
+namespace GeoLib.Dal.Model.Entities
 {
     public class FeatureClass
     {

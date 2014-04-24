@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using GeoLib.Model;
-using GeoLib.Model.Entities;
-using GeoLib.Resources;
-using Currency = GeoLib.Model.Entities.Currency;
+using GeoLib.Dal.Model;
+using GeoLib.Dal.Model.Entities;
+using GeoLib.Dal.Resources;
+using Currency = GeoLib.Dal.Model.Entities.Currency;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class CountryHelper
     {

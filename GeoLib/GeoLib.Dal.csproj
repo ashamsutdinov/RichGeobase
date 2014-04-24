@@ -7,8 +7,8 @@
     <ProjectGuid>{9D242814-32DA-404A-B21F-A58983ED9263}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoLib</RootNamespace>
-    <AssemblyName>GeoLib</AssemblyName>
+    <RootNamespace>GeoLib.Dal</RootNamespace>
+    <AssemblyName>GeoLib.Dal</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -318,6 +318,14 @@
     <Compile Include="Migrations\201404231815415_ToponymTags.Designer.cs">
       <DependentUpon>201404231815415_ToponymTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404241753502_ToponymCode.cs" />
+    <Compile Include="Migrations\201404241753502_ToponymCode.Designer.cs">
+      <DependentUpon>201404241753502_ToponymCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404241824118_ToponymDateIndices.cs" />
+    <Compile Include="Migrations\201404241824118_ToponymDateIndices.Designer.cs">
+      <DependentUpon>201404241824118_ToponymDateIndices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DbSetExtensions.cs" />
     <Compile Include="Model\Entities\AdministrativeUnit.cs" />
@@ -336,6 +344,7 @@
     <Compile Include="Model\Entities\TimeZone.cs" />
     <Compile Include="Model\Entities\Toponym.cs" />
     <Compile Include="Model\Entities\ToponymName.cs" />
+    <Compile Include="Model\Entities\ToponymTag.cs" />
     <Compile Include="Model\EntityHelper.cs" />
     <Compile Include="Model\GeoContext.cs" />
     <Compile Include="OSM\OpenStreetMapHelper.cs" />
@@ -474,6 +483,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404231815415_ToponymTags.resx">
       <DependentUpon>201404231815415_ToponymTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404241753502_ToponymCode.resx">
+      <DependentUpon>201404241753502_ToponymCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404241824118_ToponymDateIndices.resx">
+      <DependentUpon>201404241824118_ToponymDateIndices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\GeoRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

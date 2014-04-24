@@ -24,7 +24,7 @@ namespace GeoParser
             //AdministrativeUnitHelper.ParseAdmin1Units("http://download.geonames.org/export/dump/admin1CodesASCII.txt");
             //AdministrativeUnitHelper.ParseAdmin2Units("http://download.geonames.org/export/dump/admin2Codes.txt");
             ToponymHelper.ParseToponyms(@"D:\Dropbox\Work\geobase\geonames\dump\allCountries.txt");
-            ToponymHelper.ParseToponymNames("http://download.geonames.org/export/dump/alternateNames.zip");
+            //ToponymHelper.ParseToponymNames("http://download.geonames.org/export/dump/alternateNames.zip");
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities1000.zip", CitySize.Small);
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities5000.zip", CitySize.Medium);
             //CityHelper.ParseCities("http://download.geonames.org/export/dump/cities15000.zip", CitySize.Large);

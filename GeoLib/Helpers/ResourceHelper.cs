@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class ResourceHelper
     {

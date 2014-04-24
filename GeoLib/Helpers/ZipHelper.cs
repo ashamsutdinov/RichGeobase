@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Ionic.Zip;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class ZipHelper
     {

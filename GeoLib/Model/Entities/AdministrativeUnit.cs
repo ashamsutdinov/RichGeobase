@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeoLib.Model.Entities
+namespace GeoLib.Dal.Model.Entities
 {
     public class AdministrativeUnit
     {
@@ -14,7 +14,7 @@ namespace GeoLib.Model.Entities
         [ForeignKey("CountryId")]
         public Country Country { get; set; }
 
-        [Index, StringLength(32)]
+        [Index, StringLength(128)]
         public string Code { get; set; }
 
         [Index]

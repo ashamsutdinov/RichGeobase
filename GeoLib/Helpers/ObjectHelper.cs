@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading;
 using Newtonsoft.Json;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class ObjectHelper
     {

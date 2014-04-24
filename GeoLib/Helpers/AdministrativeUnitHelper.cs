@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using GeoLib.Model;
-using GeoLib.Model.Entities;
+using GeoLib.Dal.Model;
+using GeoLib.Dal.Model.Entities;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class AdministrativeUnitHelper
     {

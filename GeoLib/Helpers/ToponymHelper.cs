@@ -4,11 +4,11 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using GeoLib.Dal.Model;
+using GeoLib.Dal.Model.Entities;
 using GeoLib.GeoNames;
-using GeoLib.Model;
-using GeoLib.Model.Entities;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class ToponymHelper
     {
@@ -36,7 +36,7 @@ namespace GeoLib.Helpers
                             if (line.StartsWith("#"))
                                 continue;
 
-                            Console.WriteLine(line);
+                            //Console.WriteLine(line);
 
                             var parts = line.Split(new[] { '\t' });
                             if (parts.Length < 4)
@@ -47,6 +47,7 @@ namespace GeoLib.Helpers
                                 continue;
 
                             var id = int.Parse(sid);
+
                             var t = ctx.Toponyms.GetById(id);
                             if (t == null)
                                 continue;
@@ -102,6 +103,9 @@ namespace GeoLib.Helpers
 
             using (var sr = new StreamReader(stream, Encoding.UTF8))
             {
+                const int lastTId = 7084827;
+                var parsed = 0;
+                var lastSavedTFound = false;
                 while (!sr.EndOfStream)
                 {
                     using (var ctx = new GeoContext())
@@ -115,7 +119,7 @@ namespace GeoLib.Helpers
                             if (line.StartsWith("#"))
                                 continue;
 
-                            Console.WriteLine(line);
+                            //Console.WriteLine(line);
 
                             var parts = line.Split(new[] { '\t' });
                             if (parts.Length < 19)
@@ -126,8 +130,19 @@ namespace GeoLib.Helpers
                                 continue;
 
                             var id = int.Parse(sid);
-                            if (id <= 0)
+                            if (id < 0)
                                 continue;
+
+                            if (!lastSavedTFound)
+                            {
+                                lastSavedTFound = id == lastTId;
+                            }
+                            if (!lastSavedTFound)
+                                continue;
+
+                            parsed++;
+                            if (parsed % 1000 == 0)
+                                Console.WriteLine(parsed);
 
                             var toponym = ctx.Toponyms.GetOrCreate(id);
                             var t = toponym.Entity;
@@ -209,9 +224,10 @@ namespace GeoLib.Helpers
                                 var isAdm1 = !string.IsNullOrEmpty(adm1Code);
                                 if (isAdm1)
                                 {
-                                    var adm1ShouldBeSaved = string.IsNullOrEmpty(adm2Code);
-                                    var adm1Name = adm1ShouldBeSaved ? name : null;
-                                    var adm1TName = adm1ShouldBeSaved ? tname : null;
+                                    var existingUnit = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, adm1Code, 1);
+                                    var adm1ShouldBeSaved = string.IsNullOrEmpty(adm2Code) || existingUnit == null;
+                                    var adm1Name = adm1ShouldBeSaved ? existingUnit != null ? name : adm1Code : null;
+                                    var adm1TName = adm1ShouldBeSaved ? existingUnit != null ? tname : adm1Code : null;
                                     var adm1TId = adm1ShouldBeSaved ? (int?)id : null;
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm1Code, adm1Name, adm1TName, 1, adm1TId, ctx);
                                     t.Admin1 = aUnit;
@@ -219,9 +235,10 @@ namespace GeoLib.Helpers
                                 var isAdm2 = !string.IsNullOrEmpty(adm2Code);
                                 if (isAdm2)
                                 {
-                                    var adm2ShouldBeSaved = string.IsNullOrEmpty(adm3Code);
-                                    var adm2Name = adm2ShouldBeSaved ? name : null;
-                                    var adm2TName = adm2ShouldBeSaved ? tname : null;
+                                    var existingUnit = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, adm2Code, 2);
+                                    var adm2ShouldBeSaved = string.IsNullOrEmpty(adm3Code) || existingUnit == null;
+                                    var adm2Name = adm2ShouldBeSaved ? existingUnit != null ? name : adm2Code : null;
+                                    var adm2TName = adm2ShouldBeSaved ? existingUnit != null ? tname : adm2Code : null;
                                     var adm2TId = adm2ShouldBeSaved ? (int?)id : null;
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm2Code, adm2Name, adm2TName, 2, adm2TId, ctx);
                                     t.Admin2 = aUnit;
@@ -229,9 +246,10 @@ namespace GeoLib.Helpers
                                 var isAdm3 = !string.IsNullOrEmpty(adm3Code);
                                 if (isAdm3)
                                 {
-                                    var adm3ShouldBeSaved = string.IsNullOrEmpty(adm4Code);
-                                    var adm3Name = adm3ShouldBeSaved ? name : null;
-                                    var adm3TName = adm3ShouldBeSaved ? tname : null;
+                                    var existingUnit = ctx.AdministrativeUnits.FindAdministrativeUnit(ctry.Id, adm3Code, 3);
+                                    var adm3ShouldBeSaved = string.IsNullOrEmpty(adm4Code) || existingUnit == null;
+                                    var adm3Name = adm3ShouldBeSaved ? existingUnit != null ? name : adm3Code : null;
+                                    var adm3TName = adm3ShouldBeSaved ? existingUnit != null ? tname : adm3Code : null;
                                     var adm3TId = adm3ShouldBeSaved ? (int?)id : null;
                                     var aUnit = AdministrativeUnitHelper.SaveAdministrativeUnit(ctry, adm3Code, adm3Name, adm3TName, 3, adm3TId, ctx);
                                     t.Admin3 = aUnit;

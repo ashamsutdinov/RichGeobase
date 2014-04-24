@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeoLib.Helpers;
+using GeoLib.Dal.Helpers;
 using NGeo.GeoNames;
 
 namespace GeoLib.GeoNames

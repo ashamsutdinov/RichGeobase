@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using GeoLib.Model.Entities;
+using GeoLib.Dal.Model.Entities;
 
-namespace GeoLib.Model
+namespace GeoLib.Dal.Model
 {
     public class GeoContext : 
         DbContext

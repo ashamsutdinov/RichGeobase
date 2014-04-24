@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeoLib.Model.Entities
+namespace GeoLib.Dal.Model.Entities
 {
     public class BoundingBox
     {

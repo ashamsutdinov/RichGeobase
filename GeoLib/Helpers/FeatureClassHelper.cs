@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using GeoLib.Model;
+using GeoLib.Dal.Model;
 
-namespace GeoLib.Helpers
+namespace GeoLib.Dal.Helpers
 {
     public static class FeatureClassHelper
     {

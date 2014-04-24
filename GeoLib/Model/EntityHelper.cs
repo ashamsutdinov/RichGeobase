@@ -1,4 +1,4 @@
-﻿namespace GeoLib.Model
+﻿namespace GeoLib.Dal.Model
 {
     public class EntityHelper<TEntity>
     {

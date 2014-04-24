@@ -1,21 +1,17 @@
-using GeoLib.Model;
+using GeoLib.Dal.Model;
 
-namespace GeoLib.Migrations
+namespace GeoLib.Dal.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GeoLib.Model.GeoContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<GeoContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextType = typeof (GeoContext);
         }
 
-        protected override void Seed(GeoLib.Model.GeoContext context)
+        protected override void Seed(GeoContext context)
         {
             //  This method will be called after migrating to the latest version.
 

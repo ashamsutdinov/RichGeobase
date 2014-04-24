@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoLib.Resources {
+namespace GeoLib.Dal.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeoLib.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoLib.Resources.GeoRes", typeof(GeoRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoLib.Dal.Resources.GeoRes", typeof(GeoRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -204,6 +204,7 @@ namespace GeoLib.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to _	_	_	Neutral language
+        ///kladr kladr kladr Kladr language
         ///afa	afa		Afro-Asiatic languages
         ///alg	alg		Algonquian languages
         ///apa	apa		Apache languages
@@ -220,8 +221,7 @@ namespace GeoLib.Resources {
         ///cai	cai		Central American Indian languages
         ///cau	cau		Caucasian languages
         ///cel	cel		Celtic languages
-        ///cmc	cmc		Chamic languages
-        ///cpe	cpe		Creole [rest of string was truncated]&quot;;.
+        ///cmc	cmc	 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string iso_languagecodes {
             get {
