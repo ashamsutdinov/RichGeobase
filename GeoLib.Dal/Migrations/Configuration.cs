@@ -1,6 +1,6 @@
 using GeoLib.Dal.Model;
 
-namespace GeoLib.Dal.Migrations
+namespace GeoLib.Migrations
 {
     using System.Data.Entity.Migrations;
 
