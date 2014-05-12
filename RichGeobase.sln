@@ -37,6 +37,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Resources", "GeoLib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Query.Dal", "RichGeobase.Common\RichGeobase.Query.Dal\RichGeobase.Query.Dal.csproj", "{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RichGeobase.Components", "RichGeobase.Components", "{E1F1FA4F-2895-4450-BC55-FDB4188EAC98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Account", "RichGeobase.Components\RichGeobase.Account\RichGeobase.Account.csproj", "{12461367-F2F2-4299-ADA2-35335D2DA1BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichGeobase.Account.Dal", "RichGeobase.Components\RichGeobase.Account.Dal\RichGeobase.Account.Dal.csproj", "{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +105,14 @@ Global
 		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12461367-F2F2-4299-ADA2-35335D2DA1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12461367-F2F2-4299-ADA2-35335D2DA1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12461367-F2F2-4299-ADA2-35335D2DA1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12461367-F2F2-4299-ADA2-35335D2DA1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +132,7 @@ Global
 		{B1D6604D-4CB9-44F5-B428-631445927DAC} = {1DD9B8AD-4245-4C31-83B1-8342EE4C71D9}
 		{9D70E71A-E11B-4B54-96F8-3D143E3DD618} = {53916543-6B63-41F7-8676-8C2C74ADD624}
 		{1C1592E8-9D9E-445F-B8C7-E6E5DF9969CF} = {53916543-6B63-41F7-8676-8C2C74ADD624}
+		{12461367-F2F2-4299-ADA2-35335D2DA1BA} = {E1F1FA4F-2895-4450-BC55-FDB4188EAC98}
+		{A2A2E6A2-0774-4B96-9BF0-78B9EBB92211} = {E1F1FA4F-2895-4450-BC55-FDB4188EAC98}
 	EndGlobalSection
 EndGlobal

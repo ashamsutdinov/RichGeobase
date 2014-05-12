@@ -43,28 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Criterions\Account\CheckUserCriterion.cs" />
-    <Compile Include="Criterions\Account\GetIndividualUserByIdCriterion.cs" />
-    <Compile Include="Criterions\Account\GetInstitutionalUserByIdCriterion.cs" />
     <Compile Include="Criterions\BaseGridCriterion.cs" />
     <Compile Include="Criterions\BasePagedAndSortCriterion.cs" />
-    <Compile Include="Criterions\EssayCriterrions\EssaySortColumn.cs" />
-    <Compile Include="Criterions\EssayCriterrions\GetEssayByTitleAndStudentCriterion.cs" />
-    <Compile Include="Criterions\EssayCriterrions\GetEssayPagedAndSortCriterion.cs" />
-    <Compile Include="Criterions\Feedback\FeedbackSortColumn.cs" />
-    <Compile Include="Criterions\Feedback\GetFeedbackPagedAndSortCriterion.cs" />
     <Compile Include="Criterions\GetAllCriterion.cs" />
     <Compile Include="Criterions\GetByIdCriterion.cs" />
-    <Compile Include="Criterions\InfoBlock\GetCountInfoPageCriterion.cs" />
-    <Compile Include="Criterions\InfoBlock\GetInfoBlockByReserveTypeCriterion.cs" />
-    <Compile Include="Criterions\InfoBlock\GetInfoBlockPageAndSortCriterion.cs" />
-    <Compile Include="Criterions\InfoBlock\GetInfoBlocksByPageIdCriterion.cs" />
-    <Compile Include="Criterions\InfoBlock\InfoBlockSortColumn.cs" />
-    <Compile Include="Criterions\InfoBlock\InfoPageSettingWithReservedPageCriterion.cs" />
-    <Compile Include="Criterions\PaymentCriterions\GetPaymentPagedAndSortCriterion.cs" />
-    <Compile Include="Criterions\PaymentCriterions\GetPaymentsByUserCriterion.cs" />
-    <Compile Include="Criterions\PaymentCriterions\PaymentSortColumn.cs" />
-    <Compile Include="Criterions\Summary\GetSummaryByEssayIdCriterion.cs" />
     <Compile Include="Helpers\OrderedQueryableHelper.cs" />
     <Compile Include="Helpers\PropertyHelper.cs" />
     <Compile Include="Interface\ICriterion.cs" />
