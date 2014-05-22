@@ -74,10 +74,6 @@
       <Project>{9D242814-32DA-404A-B21F-A58983ED9263}</Project>
       <Name>GeoLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RichGeobase.Common\RichGeobase.Common\RichGeobase.Common.csproj">
-      <Project>{C5ECC411-ABD5-4F81-9DF8-11E6183A68EB}</Project>
-      <Name>RichGeobase.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\RichGeobase.Common\RichGeobase.Query\RichGeobase.Query.csproj">
       <Project>{9D70E71A-E11B-4B54-96F8-3D143E3DD618}</Project>
       <Name>RichGeobase.Query</Name>
