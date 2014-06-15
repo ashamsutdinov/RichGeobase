@@ -123,4 +123,13 @@
   <data name="CountryHelper_ParseCountries_Skipping_country___0_" xml:space="preserve">
     <value>Skipping country: {0}</value>
   </data>
+  <data name="LocationService" xml:space="preserve">
+    <value>Location service</value>
+  </data>
+  <data name="PurchaseNow" xml:space="preserve">
+    <value>Purchase Now</value>
+  </data>
+  <data name="SeviceDescription" xml:space="preserve">
+    <value>This is address service in low level</value>
+  </data>
 </root>

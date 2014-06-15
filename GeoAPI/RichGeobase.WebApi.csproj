@@ -389,6 +389,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Features.cshtml" />
+    <Content Include="Views\Home\Portfolio.cshtml" />
+    <Content Include="Views\Home\Team.cshtml" />
+    <Content Include="Views\Home\Contacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -398,6 +404,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GeoLib.Resources\GeoLib.Resources.csproj">
+      <Project>{5C8E4730-440C-44E5-AE4A-9CEB711B03B1}</Project>
+      <Name>GeoLib.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeoLib\GeoLib.csproj">
       <Project>{9d242814-32da-404a-b21f-a58983ed9263}</Project>
       <Name>GeoLib</Name>

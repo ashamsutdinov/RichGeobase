@@ -77,5 +77,32 @@ namespace GeoLib.Resources {
                 return ResourceManager.GetString("CountryHelper_ParseCountries_Undefined_language__0_", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location service.
+        /// </summary>
+        public static string LocationService {
+            get {
+                return ResourceManager.GetString("LocationService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Now.
+        /// </summary>
+        public static string PurchaseNow {
+            get {
+                return ResourceManager.GetString("PurchaseNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is address service in low level.
+        /// </summary>
+        public static string SeviceDescription {
+            get {
+                return ResourceManager.GetString("SeviceDescription", resourceCulture);
+            }
+        }
     }
 }
