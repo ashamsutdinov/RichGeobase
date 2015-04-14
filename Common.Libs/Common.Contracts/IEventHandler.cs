@@ -4,9 +4,5 @@ namespace Common.Contracts
         where TEvent : IEvent
     {
         void Handle(TEvent evt);
-
-        void Subscribe(IEventDispatcher<TEvent> dispatcher);
-
-        void Unsubscribe(IEventDispatcher<TEvent> dispatcher);
     }
 }

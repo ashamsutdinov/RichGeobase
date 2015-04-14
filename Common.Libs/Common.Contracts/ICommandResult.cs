@@ -1,9 +1,13 @@
 ﻿namespace Common.Contracts
 {
-    public interface ICommandResult<out TResultData>
+    public interface ICommandResult
+    {
+        ITransactionResult TransactionResult { get; }
+    }
+
+    public interface ICommandResult<out TResultData> : 
+        ICommandResult
     {
         TResultData Data { get; }
-
-        ITransactionResult Result { get; }
     }
 }

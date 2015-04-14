@@ -1,7 +1,17 @@
 namespace Common.Contracts
 {
-    public interface ICommand<out TResultData>
+    public interface ICommand
     {
-        ICommandResult<TResultData> Execute();
+        
+    }
+
+    public interface ICommand<in TInputData, out TResult> : 
+        ICommand
+        where TInputData : ICommandInput
+        where TResult : ICommandResult
+    {
+        TInputData Input { set; }
+
+        TResult Execute();
     }
 }

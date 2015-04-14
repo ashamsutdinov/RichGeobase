@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Data.Contracts", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Cache.Contracts", "Common.Libs\Common.Cache.Contracts\Common.Cache.Contracts.csproj", "{4699BE7E-EA96-4C1C-AC72-E188C4B27F30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common.Libs\Common\Common.csproj", "{B5D6D804-5B4C-4110-9798-D1489C2C500E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{4699BE7E-EA96-4C1C-AC72-E188C4B27F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4699BE7E-EA96-4C1C-AC72-E188C4B27F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4699BE7E-EA96-4C1C-AC72-E188C4B27F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D6D804-5B4C-4110-9798-D1489C2C500E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D6D804-5B4C-4110-9798-D1489C2C500E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D6D804-5B4C-4110-9798-D1489C2C500E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D6D804-5B4C-4110-9798-D1489C2C500E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,5 +171,6 @@ Global
 		{C1A044B1-9B38-40EC-8C77-1BAC842A380C} = {1241E34A-17FB-46CB-ABD8-B30628EE2635}
 		{BC0F1C88-21A8-4C28-AD64-80F971B69C16} = {1241E34A-17FB-46CB-ABD8-B30628EE2635}
 		{4699BE7E-EA96-4C1C-AC72-E188C4B27F30} = {1241E34A-17FB-46CB-ABD8-B30628EE2635}
+		{B5D6D804-5B4C-4110-9798-D1489C2C500E} = {1241E34A-17FB-46CB-ABD8-B30628EE2635}
 	EndGlobalSection
 EndGlobal
